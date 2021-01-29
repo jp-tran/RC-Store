@@ -28,8 +28,8 @@ const Product: React.FunctionComponent<Props> = () => {
       <CardHeader title='A product' />
       <CardMedia
         className={classes.image}
-        // image='./assets/img/dummy_product.jpeg'  //<-- Can't load from src
-        image='https://dummyimage.com/300x300/5467f2/fff'
+        image='/dummy_product.jpeg' //<-- Can't load from src
+        // image='https://dummyimage.com/300x300/5467f2/fff'
       />
       <CardContent>
         This is a great product you'd like to buy for sure.
