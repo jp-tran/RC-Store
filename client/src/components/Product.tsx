@@ -18,22 +18,21 @@ const useStyles = makeStyles({
   },
 });
 
-export interface Props {}
+export interface Props {
+  productName: string;
+  imageSrc: string;
+  description: string;
+}
 
-const Product: React.FunctionComponent<Props> = () => {
+const Product: React.FunctionComponent<Props> = (props) => {
+  const { productName, imageSrc, description } = props;
   const classes = useStyles();
 
   return (
     <Card className={classes.root}>
-      <CardHeader title='A product' />
-      <CardMedia
-        className={classes.image}
-        image='/dummy_product.jpeg' //<-- Can't load from src
-        // image='https://dummyimage.com/300x300/5467f2/fff'
-      />
-      <CardContent>
-        This is a great product you'd like to buy for sure.
-      </CardContent>
+      <CardHeader title={productName} />
+      <CardMedia className={classes.image} image={imageSrc} />
+      <CardContent>{description}</CardContent>
       <CardActions>
         <Button>More information</Button>
       </CardActions>
