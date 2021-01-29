@@ -1,17 +1,28 @@
 import * as React from 'react';
 
-import Product from './Product';
+import Product, { ProductProps } from './Product';
 
-export interface ProductCatalogProps {}
+export interface ProductCatalogProps {
+  productList: ProductProps[];
+}
 
-const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = () => {
+const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
+  props
+) => {
+  const { productList } = props;
   return (
     <div>
-      <Product
-        productName='A product'
-        description="A great product you'd like to buy for sure."
-        imageSrc='/dummy_product.jpeg'
-      />
+      {productList.map((productProps) => {
+        const { productName, imageSrc, description } = productProps;
+
+        return (
+          <Product
+            productName={productName}
+            imageSrc={imageSrc}
+            description={description}
+          />
+        );
+      })}
     </div>
   );
 };
