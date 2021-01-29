@@ -1,6 +1,16 @@
 import * as React from 'react';
 
+import { makeStyles } from '@material-ui/core';
+
 import Product, { ProductProps } from './Product';
+
+const useStyles = makeStyles({
+  container: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'center',
+  },
+});
 
 export interface ProductCatalogProps {
   productList: ProductProps[];
@@ -10,8 +20,10 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
   props
 ) => {
   const { productList } = props;
+  const classes = useStyles();
+
   return (
-    <div>
+    <div className={classes.container}>
       {productList.map((productProps) => {
         const { productName, imageSrc, description } = productProps;
 
