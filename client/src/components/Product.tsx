@@ -18,13 +18,13 @@ const useStyles = makeStyles({
   },
 });
 
-export interface Props {
+export interface ProductProps {
   productName: string;
   imageSrc: string;
   description: string;
 }
 
-const Product: React.FunctionComponent<Props> = (props) => {
+const Product: React.FunctionComponent<ProductProps> = (props) => {
   const { productName, imageSrc, description } = props;
   const classes = useStyles();
 
