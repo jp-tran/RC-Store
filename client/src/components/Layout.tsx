@@ -5,6 +5,8 @@ import Head from 'next/head';
 import { Button, CssBaseline } from '@material-ui/core';
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
+import Footer from './footer/Footer';
+
 interface Props {
   children?: ReactNode;
   title?: string;
@@ -46,8 +48,7 @@ const Layout = ({ children, title = 'RC Store' }: Props) => {
       </header>
       {children}
       <footer>
-        <hr />
-        <span>I'm the footer</span>
+        <Footer />
       </footer>
     </div>
   );
