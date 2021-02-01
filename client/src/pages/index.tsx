@@ -8,7 +8,7 @@ import customTheme from '../config/theme';
 const IndexPage = () => (
   <ThemeProvider theme={customTheme}>
     <Layout title='RC Store'>
-      <h1>Hello Next.js 👋</h1>
+      <h1>Home</h1>
       <ProductCatalog productList={productList} />
     </Layout>
   </ThemeProvider>
