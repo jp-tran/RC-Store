@@ -19,17 +19,18 @@ const useStyles = makeStyles({
 });
 
 export interface ProductProps {
+  productId: string;
   productName: string;
   imageSrc: string;
   description: string;
 }
 
 const Product: React.FunctionComponent<ProductProps> = (props) => {
-  const { productName, imageSrc, description } = props;
+  const { productId, productName, imageSrc, description } = props;
   const classes = useStyles();
 
   return (
-    <Card className={classes.root}>
+    <Card className={classes.root} key={productId}>
       <CardHeader title={productName} />
       <CardMedia className={classes.image} image={imageSrc} />
       <CardContent>{description}</CardContent>

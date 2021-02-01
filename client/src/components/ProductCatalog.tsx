@@ -25,10 +25,11 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
   return (
     <div className={classes.container}>
       {productList.map((productProps) => {
-        const { productName, imageSrc, description } = productProps;
+        const { productId, productName, imageSrc, description } = productProps;
 
         return (
           <Product
+            key={productId}
             productName={productName}
             imageSrc={imageSrc}
             description={description}
