@@ -1,23 +1,14 @@
 import { useRouter } from 'next/router';
 
-const Post = () => {
-  const router = useRouter();
-  const { id } = router.query;
-
-  return <p>Post: {id}</p>;
-};
-
-export default Post;
-
-/* import { useRouter } from 'next/router';
+import Layout from '../../components/Layout';
 
 export interface ProductPageProps {}
 
 const ProductPage: React.FunctionComponent<ProductPageProps> = () => {
   const router = useRouter();
-  const { pid } = router.query;
+  const { id } = router.query;
 
-  return <p>Post: {pid}</p>;
+  return <Layout>Post: {id}</Layout>;
 };
 
-export default ProductPage; */
+export default ProductPage;
