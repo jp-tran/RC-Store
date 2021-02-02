@@ -7,6 +7,8 @@ import { CssBaseline } from '@material-ui/core';
 import customTheme from '../config/theme';
 import NavBar from './navbar/NavBar';
 
+import Footer from './footer/Footer';
+
 interface Props {
   children?: ReactNode;
   title?: string;
@@ -28,8 +30,7 @@ const Layout = ({ children, title = 'RC Store' }: Props) => {
         <NavBar />
         {children}
         <footer>
-          <hr />
-          <span>I'm the footer</span>
+          <Footer />
         </footer>
       </ThemeProvider>
     </div>
