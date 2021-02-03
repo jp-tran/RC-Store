@@ -1,5 +1,7 @@
 import * as React from 'react';
 
+import Link from 'next/link';
+
 import { Card, makeStyles } from '@material-ui/core';
 import CardHeader from '@material-ui/core/CardHeader';
 import CardMedia from '@material-ui/core/CardMedia';
@@ -35,7 +37,11 @@ const Product: React.FunctionComponent<ProductProps> = (props) => {
       <CardMedia className={classes.image} image={imageSrc} />
       <CardContent>{description}</CardContent>
       <CardActions>
-        <Button>More information</Button>
+        <Link href={`/products/${productId}`}>
+          <a>
+            <Button>More information</Button>
+          </a>
+        </Link>
       </CardActions>
     </Card>
   );

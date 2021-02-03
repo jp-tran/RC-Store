@@ -29,7 +29,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
 
         return (
           <Product
-            key={productId}
+            productId={productId}
             productName={productName}
             imageSrc={imageSrc}
             description={description}
