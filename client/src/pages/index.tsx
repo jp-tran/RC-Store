@@ -1,12 +1,24 @@
 import Layout from '../components/Layout';
 import ProductCatalog from '../components/ProductCatalog';
-import productList from '../lib/getProducts';
+import { ProductProps } from '../components/Product';
+import getProducts from '../lib/products';
 
-const IndexPage = () => (
+const IndexPage: React.FunctionComponent<{ products: ProductProps[] }> = ({
+  products,
+}) => (
   <Layout title='RC Store'>
     <h1>Home</h1>
-    <ProductCatalog productList={productList} />
+    <ProductCatalog productList={products} />
   </Layout>
 );
+
+export async function getStaticProps() {
+  const products = getProducts();
+  return {
+    props: {
+      products,
+    },
+  };
+}
 
 export default IndexPage;

@@ -1,4 +1,5 @@
 import { ProductProps } from '../components/Product';
+
 const getProducts = (): ProductProps[] => [
   {
     productId: '0',
@@ -20,6 +21,4 @@ const getProducts = (): ProductProps[] => [
   },
 ];
 
-const productList = getProducts();
-
-export default productList;
+export default getProducts;
