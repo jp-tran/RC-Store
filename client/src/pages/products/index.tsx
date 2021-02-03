@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout';
 import ProductCatalog from '../../components/ProductCatalog';
-import productList from '../../components/getProducts';
+import productList from '../../lib/getProducts';
 
 const ProductsPage = () => (
   <Layout title='RC Store'>
