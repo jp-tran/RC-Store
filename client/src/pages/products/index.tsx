@@ -1,6 +1,6 @@
 import Layout from '../../components/Layout';
-import ProductCatalog from '../../components/ProductCatalog';
-import { ProductProps } from '../../components/Product';
+import ProductCatalog from '../../components/productCatalog/ProductCatalog';
+import { ProductProps } from '../../components/productCatalog/Product';
 import getProducts from '../../lib/products';
 
 const ProductsPage: React.FunctionComponent<{ products: ProductProps[] }> = ({

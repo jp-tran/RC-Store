@@ -1,4 +1,4 @@
-import { ProductProps } from '../components/Product';
+import { ProductProps } from '../components/productCatalog/Product';
 
 const getProducts = (): ProductProps[] => [
   {
