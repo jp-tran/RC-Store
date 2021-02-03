@@ -7,9 +7,13 @@ import {
   getProductData,
 } from '../../lib/products';
 
-export interface ProductPageProps {}
+export interface ProductPageProps {
+  productProps: ProductProps;
+}
 
-const ProductPage: React.FunctionComponent = ({ productProps }) => {
+const ProductPage: React.FunctionComponent<ProductPageProps> = ({
+  productProps,
+}) => {
   return <Layout>Hi!</Layout>;
 };
 
@@ -38,10 +42,9 @@ export async function getStaticPaths(): Promise<{
   };
 }
 
-/* export async function getStaticProps(
-  params: ProductPath['params']
-): Promise<{ props: { productProps: ProductProps } }> */
-export async function getStaticProps({ params }) {
+export async function getStaticProps({
+  params,
+}: ProductPath): Promise<{ props: { productProps: ProductProps } }> {
   const productProps = getProductData(params.id);
   return {
     props: {
