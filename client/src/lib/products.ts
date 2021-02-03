@@ -8,7 +8,7 @@ const getProducts = (): ProductProps[] => [
   {
     productId: '0',
     productName: 'A product',
-    imageSrc: '/dummy_product.jpeg',
+    imageSrc: '/product_img.webp',
     description: "A great product you'd like to buy for sure.",
   },
   {

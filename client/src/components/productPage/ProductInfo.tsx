@@ -17,16 +17,23 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ProductInfoProps {}
+export interface ProductInfoProps {
+  productName: string;
+  description: string;
+}
 
-const ProductInfo: React.FunctionComponent<ProductInfoProps> = () => {
+const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
+  productName,
+  description,
+}) => {
   const classes = useStyles();
   // Need to encode product description: newlines, styling, etc.
-  const sometext: string =
-    'Product description\n\nA product with lots of nice feats.';
   return (
     <Container className={classes.child}>
-      <div>{sometext}</div>
+      <div>
+        <h1>{productName}</h1>
+        <div>{description}</div>
+      </div>
       <div className={classes.button}>
         <Button color='primary'>Add to cart</Button>
       </div>

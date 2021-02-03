@@ -1,6 +1,7 @@
 import { ProductProps } from '../../components/productCatalog/Product';
 
 import Layout from '../../components/Layout';
+import ProductTemplate from '../../components/productPage/ProductTemplate';
 import {
   getAllProductPaths,
   ProductPath,
@@ -14,7 +15,16 @@ export interface ProductPageProps {
 const ProductPage: React.FunctionComponent<ProductPageProps> = ({
   productProps,
 }) => {
-  return <Layout>Hi!</Layout>;
+  const { productName, imageSrc, description } = productProps;
+  return (
+    <Layout>
+      <ProductTemplate
+        productName={productName}
+        imageSrc={imageSrc}
+        description={description}
+      />
+    </Layout>
+  );
 };
 
 export async function getStaticPaths(): Promise<{

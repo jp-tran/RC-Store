@@ -32,22 +32,28 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ProductImageProps {}
+export interface ProductImageProps {
+  productName: string;
+  imageSrc: string;
+}
 
-const ProductImage: React.FunctionComponent<ProductImageProps> = () => {
+const ProductImage: React.FunctionComponent<ProductImageProps> = ({
+  productName,
+  imageSrc,
+}) => {
   const classes = useStyles();
 
   return (
     <div className={classes.child}>
       <div className={classes.textContainer}>
         <h2 className={classes.text}>
-          Product Name
+          {productName}
           <br />
         </h2>
         <h3 className={classes.text}>$49.99 USD</h3>
       </div>
       <div className={classes.imageContainer}>
-        <img className={classes.image} src='/product_img.webp' />
+        <img className={classes.image} src={imageSrc} />
       </div>
     </div>
   );
