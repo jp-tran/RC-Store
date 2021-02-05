@@ -18,14 +18,11 @@ const options = {
       scope: '',
       profileUrl: 'https://www.recurse.com/api/v1/profiles/me',
       async profile(profile: any) {
-        console.log('profile object: ------>');
-        console.log(profile);
         return {
           id: profile.id,
-          first_name: profile.first_name,
-          last_name: profile.last_name,
+          name: profile.first_name,
           email: profile.email,
-          image_path: profile.image_path,
+          image: profile.image_path,
         };
       },
     },
