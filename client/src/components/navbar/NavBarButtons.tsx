@@ -1,12 +1,52 @@
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
-import { Badge, Button, IconButton } from '@material-ui/core';
+import { Badge, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
+import NextLink from '../NextLink';
+
 const NavBarButtons = () => {
-  const [session, loading] = useSession();
+  const [session] = useSession();
+  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+
+  const isMenuOpen = Boolean(anchorEl);
+
+  const handleMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+  };
+
+  const handleSignOut = () => {
+    signOut();
+    handleMenuClose();
+  };
+
+  const renderMenu = (
+    <Menu
+      anchorEl={anchorEl}
+      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      id='account-menu'
+      keepMounted
+      transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+      open={isMenuOpen}
+      onClose={handleMenuClose}
+    >
+      <MenuItem
+        onClick={handleMenuClose}
+        component={NextLink}
+        href='/account'
+        disableFocusRipple={true}
+      >
+        Account
+      </MenuItem>
+      <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
+    </Menu>
+  );
 
   return (
     <>
@@ -15,20 +55,19 @@ const NavBarButtons = () => {
           <ShoppingCartIcon />
         </Badge>
       </IconButton>
-      {session && (
-        <>
-          <IconButton
-            aria-label='account of current user'
-            // aria-haspopup="true"
-            // onClick={handleProfileMenuOpen}
-            color='inherit'
-          >
-            <AccountIcon />
-          </IconButton>
-          <Button onClick={() => signOut()}>Sign Out</Button>
-        </>
+      {session ? (
+        <IconButton
+          aria-label='account of current user'
+          aria-haspopup='true'
+          onClick={handleMenuOpen}
+          color='inherit'
+        >
+          <AccountIcon />
+        </IconButton>
+      ) : (
+        <Button onClick={() => signIn()}>Sign In</Button>
       )}
-      {!session && <Button onClick={() => signIn()}>Sign In</Button>}
+      {renderMenu}
     </>
   );
 };
