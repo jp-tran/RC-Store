@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/core';
 const useStyles = makeStyles({
   child: {
     width: '50%',
-    background: '#5f3dc4',
+    background: 'white',
     position: 'relative',
   },
 
