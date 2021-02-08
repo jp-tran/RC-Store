@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
@@ -23,18 +25,25 @@ const useStyles = makeStyles({
 });
 
 export interface FeaturedProductProps {
+  productId: string;
   productName: string;
   imageSrc: string;
 }
 
 const FeaturedProduct: React.FunctionComponent<FeaturedProductProps> = ({
+  productId,
   productName,
   imageSrc,
 }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <img src={imageSrc} className={classes.image} />
+      <Link href={`/products/${productId}`}>
+        <a>
+          <img src={imageSrc} className={classes.image} />
+        </a>
+      </Link>
+
       <div className={classes.textContainer}>
         <h2 className={classes.text}>
           {productName}
