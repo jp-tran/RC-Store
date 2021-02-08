@@ -3,25 +3,31 @@ import * as React from 'react';
 import { makeStyles } from '@material-ui/core';
 
 import ProductCard, { ProductCardProps } from './ProductCard';
-import ProductImage from '../productPage/ProductImage';
+import FeaturedProduct from './FeaturedProduct';
 
 const useStyles = makeStyles({
   grid: {
     display: 'grid',
+    gridTemplateColumns: '4fr 2fr',
     gridTemplateAreas: `
     "product1 product2"
     "product1 product3"
     "catalog catalog"
     `,
+    placeItems: 'center center',
+    background: 'white',
   },
   product1: {
     gridArea: 'product1',
+    background: 'red',
   },
   product2: {
     gridArea: 'product2',
+    background: 'blue',
   },
   product3: {
     gridArea: 'product3',
+    background: 'yellow',
   },
   container: {
     gridArea: 'catalog',
@@ -41,13 +47,13 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
   const { productList } = props;
   const classes = useStyles();
 
-  interface FeaturedProduct {
+  interface FeaturedProductAndStyle {
     productProps: ProductCardProps;
     style: string;
   }
 
   // Get top 3 products and corresponding style
-  const featuredProducts: FeaturedProduct[] = [
+  const featuredProducts: FeaturedProductAndStyle[] = [
     { productProps: productList[0], style: classes.product1 },
     { productProps: productList[1], style: classes.product2 },
     { productProps: productList[2], style: classes.product3 },
@@ -57,7 +63,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
       {featuredProducts.map(({ productProps, style }) => {
         return (
           <div className={style}>
-            <ProductImage
+            <FeaturedProduct
               productName={productProps.productName}
               imageSrc={productProps.imageSrc}
             />
