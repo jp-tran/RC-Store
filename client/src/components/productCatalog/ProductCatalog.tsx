@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { makeStyles } from '@material-ui/core';
 
-import Product, { ProductProps } from './Product';
+import ProductCard, { ProductCardProps } from './ProductCard';
 import ProductImage from '../productPage/ProductImage';
 
 const useStyles = makeStyles({
@@ -32,7 +32,7 @@ const useStyles = makeStyles({
 });
 
 export interface ProductCatalogProps {
-  productList: ProductProps[];
+  productList: ProductCardProps[];
 }
 
 const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
@@ -42,7 +42,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
   const classes = useStyles();
 
   interface FeaturedProduct {
-    productProps: ProductProps;
+    productProps: ProductCardProps;
     style: string;
   }
 
@@ -74,7 +74,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
           } = productProps;
 
           return (
-            <Product
+            <ProductCard
               productId={productId}
               productName={productName}
               imageSrc={imageSrc}

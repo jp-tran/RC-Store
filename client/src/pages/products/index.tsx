@@ -1,11 +1,11 @@
 import Layout from '../../components/Layout';
 import ProductCatalog from '../../components/productCatalog/ProductCatalog';
-import { ProductProps } from '../../components/productCatalog/Product';
+import { ProductCardProps } from '../../components/productCatalog/ProductCard';
 import getProducts from '../../lib/products';
 
-const ProductsPage: React.FunctionComponent<{ products: ProductProps[] }> = ({
-  products,
-}) => (
+const ProductsPage: React.FunctionComponent<{
+  products: ProductCardProps[];
+}> = ({ products }) => (
   <Layout title='RC Store'>
     <h1>Products</h1>
     <ProductCatalog productList={products} />

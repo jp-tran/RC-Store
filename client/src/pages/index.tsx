@@ -1,9 +1,9 @@
 import Layout from '../components/Layout';
 import ProductCatalog from '../components/productCatalog/ProductCatalog';
-import { ProductProps } from '../components/productCatalog/Product';
+import { ProductCardProps } from '../components/productCatalog/ProductCard';
 import getProducts from '../lib/products';
 
-const IndexPage: React.FunctionComponent<{ products: ProductProps[] }> = ({
+const IndexPage: React.FunctionComponent<{ products: ProductCardProps[] }> = ({
   products,
 }) => (
   <Layout title='RC Store'>
