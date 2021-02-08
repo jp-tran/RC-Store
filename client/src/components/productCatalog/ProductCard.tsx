@@ -20,14 +20,14 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ProductProps {
+export interface ProductCardProps {
   productId: string;
   productName: string;
   imageSrc: string;
   description: string;
 }
 
-const Product: React.FunctionComponent<ProductProps> = (props) => {
+const ProductCard: React.FunctionComponent<ProductCardProps> = (props) => {
   const { productId, productName, imageSrc, description } = props;
   const classes = useStyles();
 
@@ -47,4 +47,4 @@ const Product: React.FunctionComponent<ProductProps> = (props) => {
   );
 };
 
-export default Product;
+export default ProductCard;

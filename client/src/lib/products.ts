@@ -1,10 +1,10 @@
-import { ProductProps } from '../components/productCatalog/Product';
+import { ProductCardProps } from '../components/productCatalog/ProductCard';
 
 export interface ProductPath {
   params: { id: string };
 }
 
-const getProducts = (): ProductProps[] => [
+const getProducts = (): ProductCardProps[] => [
   {
     productId: '0',
     productName: 'RC t-shirt',
@@ -26,7 +26,7 @@ const getProducts = (): ProductProps[] => [
 ];
 
 export const getAllProductPaths = () => {
-  const products: ProductProps[] = getProducts();
+  const products: ProductCardProps[] = getProducts();
   const productPaths: ProductPath[] = products.map((product) => ({
     params: {
       id: product.productId,
@@ -36,7 +36,7 @@ export const getAllProductPaths = () => {
   return productPaths;
 };
 
-export const getProductData = (id: string): ProductProps => {
+export const getProductData = (id: string): ProductCardProps => {
   const products = getProducts();
   return products.filter((product) => product.productId == id)[0];
 };
