@@ -5,6 +5,7 @@ const useStyles = makeStyles({
     width: '50%',
     background: 'white',
     position: 'relative',
+    zIndex: -2,
   },
 
   textContainer: {
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
     margin: '50px 0 0 50px',
     padding: '5px 20px',
     display: 'inline',
-    background: '#7048e8',
+    background: 'black',
     color: 'white',
   },
 
@@ -26,6 +27,7 @@ const useStyles = makeStyles({
 
   image: {
     position: 'absolute',
+    zIndex: -1,
     top: '0',
     maxHeight: '100%',
     maxWidth: '100%',
@@ -45,15 +47,15 @@ const ProductImage: React.FunctionComponent<ProductImageProps> = ({
 
   return (
     <div className={classes.child}>
+      <div className={classes.imageContainer}>
+        <img className={classes.image} src={imageSrc} />
+      </div>
       <div className={classes.textContainer}>
         <h2 className={classes.text}>
           {productName}
           <br />
         </h2>
         <h3 className={classes.text}>$49.99 USD</h3>
-      </div>
-      <div className={classes.imageContainer}>
-        <img className={classes.image} src={imageSrc} />
       </div>
     </div>
   );
