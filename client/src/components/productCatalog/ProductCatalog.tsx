@@ -19,15 +19,12 @@ const useStyles = makeStyles({
   },
   product1: {
     gridArea: 'product1',
-    background: 'red',
   },
   product2: {
     gridArea: 'product2',
-    background: 'blue',
   },
   product3: {
     gridArea: 'product3',
-    background: 'yellow',
   },
   container: {
     gridArea: 'catalog',
@@ -64,6 +61,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
         return (
           <div className={style}>
             <FeaturedProduct
+              productId={productProps.productId}
               productName={productProps.productName}
               imageSrc={productProps.imageSrc}
             />
