@@ -2,12 +2,25 @@ import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
 import { Badge, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
+import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 
 import NextLink from '../NextLink';
 
+const useStyles = makeStyles(() =>
+  createStyles({
+    buttonRoot: {
+      fontSize: '1rem',
+      fontWeight: 400,
+      display: 'flex',
+      justifyContent: 'center',
+    },
+  })
+);
+
 const NavBarButtons = () => {
+  const classes = useStyles();
   const [session] = useSession();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
 
@@ -41,6 +54,7 @@ const NavBarButtons = () => {
         component={NextLink}
         href='/account'
         disableFocusRipple={true}
+        classes={{ root: classes.buttonRoot }}
       >
         Account
       </MenuItem>
