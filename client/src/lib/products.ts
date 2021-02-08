@@ -7,20 +7,20 @@ export interface ProductPath {
 const getProducts = (): ProductProps[] => [
   {
     productId: '0',
-    productName: 'A product',
-    imageSrc: '/product_img.webp',
+    productName: 'RC t-shirt',
+    imageSrc: '/t_shirt.webp',
     description: "A great product you'd like to buy for sure.",
   },
   {
     productId: '1',
-    productName: 'A 2nd product',
-    imageSrc: '/dummy_product.jpeg',
+    productName: 'RC beanie',
+    imageSrc: '/beanie.webp',
     description: 'An expensive product.',
   },
   {
     productId: '2',
-    productName: 'A third product',
-    imageSrc: '/dummy_product.jpeg',
+    productName: 'RC mug',
+    imageSrc: '/mug.webp',
     description: 'A product of great quality.',
   },
 ];
