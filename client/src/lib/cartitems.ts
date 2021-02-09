@@ -13,7 +13,7 @@ const getCartItems = (): ICartItem[] => [
     imageSrc: '/t_shirt.webp',
     description: "A great product you'd like to buy for sure.",
   price: 20,
-  quantity: 1,
+  quantity: 2,
   },
   {
     productId: '1',
@@ -21,7 +21,7 @@ const getCartItems = (): ICartItem[] => [
     imageSrc: '/beanie.webp',
     description: 'An expensive product.',
     price: 10,
-    quantity: 1,
+    quantity: 2,
   },
   {
     productId: '2',

@@ -1,5 +1,4 @@
 import Layout from '../../components/Layout';
-import ProductCatalog from '../../components/productCatalog/ProductCatalog';
 import { ICartItem } from '../../components/shoppingCart/CartItem';
 import ShoppingCart from '../../components/shoppingCart/ShoppingCart';
 import getCartItems from '../../lib/cartitems';

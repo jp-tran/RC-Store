@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { Button, makeStyles } from '@material-ui/core';
 
-import CartItem, { ICartItem } from './CartItem';
+import { ICartItem } from './CartItem';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -78,7 +78,7 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
   let total = invoiceSubtotal + taxes;
 
   return (
-    <>
+    <div>
       <TableContainer component={Paper} className={classes.container}>
         <Table className={classes.table} aria-label='cart table'>
           <TableHead>
@@ -125,7 +125,7 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
         </Table>
         <Button className={classes.checkout}>Checkout</Button>
       </TableContainer>
-    </>
+    </div>
   );
   // TODO: Replace this with a table
   // return (
