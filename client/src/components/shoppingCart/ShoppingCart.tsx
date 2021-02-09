@@ -29,7 +29,7 @@ const useStyles = makeStyles({
     border: '1px solid rgba(42,45,45,0.6)',
     color: '#23a050',
     float: 'right',
-    borderColor: '#3dc06c !important',
+    borderColor: '#3dc06c',
   },
 });
 
