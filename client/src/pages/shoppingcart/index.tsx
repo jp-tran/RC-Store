@@ -7,7 +7,7 @@ import getCartItems from '../../lib/cartitems';
 const ShoppingCartPage: React.FunctionComponent<{ cartItems: ICartItem[] }> = ({
   cartItems,
 }) => (
-  <Layout title='RC Store'>
+  <Layout title='Shopping Cart'>
     <h1>Shopping Cart</h1>
     <ShoppingCart cartItemList={cartItems} />
   </Layout>
