@@ -9,27 +9,27 @@ import { ICartItem } from '../components/shoppingCart/CartItem';
 const getCartItems = (): ICartItem[] => [
   {
     productId: '0',
-    productName: 'A product',
-    imageSrc: '/product_img.webp',
+    productName: 'RC t-shirt',
+    imageSrc: '/t_shirt.webp',
     description: "A great product you'd like to buy for sure.",
-    price: 20,
-    quantity: 1,
+  price: 20,
+  quantity: 1,
   },
   {
     productId: '1',
-    productName: 'A 2nd product',
-    imageSrc: '/dummy_product.jpeg',
+    productName: 'RC beanie',
+    imageSrc: '/beanie.webp',
     description: 'An expensive product.',
-    price: 30,
+    price: 10,
     quantity: 1,
   },
   {
     productId: '2',
-    productName: 'A third product',
-    imageSrc: '/dummy_product.jpeg',
+    productName: 'RC mug',
+    imageSrc: '/mug.webp',
     description: 'A product of great quality.',
-    price: 15,
-    quantity: 3,
+    price: 7,
+    quantity: 1,
   },
 ];
 
