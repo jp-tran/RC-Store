@@ -36,11 +36,13 @@ const useStyles = makeStyles({
 
 export interface ProductImageProps {
   productName: string;
+  price: string;
   imageSrc: string;
 }
 
 const ProductImage: React.FunctionComponent<ProductImageProps> = ({
   productName,
+  price,
   imageSrc,
 }) => {
   const classes = useStyles();
@@ -55,7 +57,7 @@ const ProductImage: React.FunctionComponent<ProductImageProps> = ({
           {productName}
           <br />
         </h2>
-        <h3 className={classes.text}>$49.99 USD</h3>
+        <h3 className={classes.text}>${price}</h3>
       </div>
     </div>
   );

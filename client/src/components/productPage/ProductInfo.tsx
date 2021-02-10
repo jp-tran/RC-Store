@@ -1,6 +1,7 @@
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+
+import StyledButton from './StyledButton';
 
 const useStyles = makeStyles({
   child: {
@@ -12,30 +13,36 @@ const useStyles = makeStyles({
     whiteSpace: 'pre-wrap', // Needed to render line breaks
     background: 'white',
   },
-  button: {
+  textContainer: {
+    padding: '20px',
+    fontSize: '1.5em',
+    overflow: 'scroll',
+  },
+  buttonContainer: {
+    marginTop: '1.5em',
     alignSelf: 'center',
   },
 });
 
 export interface ProductInfoProps {
   productName: string;
-  description: string;
+  longDescription?: string;
 }
 
 const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
   productName,
-  description,
+  longDescription,
 }) => {
   const classes = useStyles();
   // Need to encode product description: newlines, styling, etc.
   return (
     <Container className={classes.child}>
-      <div>
+      <div className={classes.textContainer}>
         <h1>{productName}</h1>
-        <div>{description}</div>
+        <div>{longDescription}</div>
       </div>
-      <div className={classes.button}>
-        <Button color='primary'>Add to cart</Button>
+      <div className={classes.buttonContainer}>
+        <StyledButton>Add to cart</StyledButton>
       </div>
     </Container>
   );
