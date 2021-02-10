@@ -1,6 +1,7 @@
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
-import Button from '@material-ui/core/Button';
+
+import StyledButton from './StyledButton';
 
 const useStyles = makeStyles({
   child: {
@@ -20,20 +21,6 @@ const useStyles = makeStyles({
   buttonContainer: {
     marginTop: '1.5em',
     alignSelf: 'center',
-  },
-  button: {
-    background: 'black',
-    paddingLeft: '1.5em',
-    paddingRight: '1.5em',
-    color: 'white',
-    fontSize: '1.5em',
-    transition: 'transform(.2s)',
-    '&:hover': {
-      backgroundColor: 'white',
-      border: 'solid black',
-      color: 'black',
-      transform: 'scale(1.1)',
-    },
   },
 });
 
@@ -55,7 +42,7 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
         <div>{longDescription}</div>
       </div>
       <div className={classes.buttonContainer}>
-        <Button className={classes.button}>Add to cart</Button>
+        <StyledButton>Add to cart</StyledButton>
       </div>
     </Container>
   );
