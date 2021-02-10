@@ -48,14 +48,7 @@ function calculateRowPrice(price: number, quantity: number) {
 }
 
 function createRow(cartItem: ICartItem) {
-  const {
-    productId,
-    productName,
-    imageSrc,
-    description,
-    price,
-    quantity,
-  } = cartItem;
+  const { productName, imageSrc, price, quantity } = cartItem;
   const rowPrice = calculateRowPrice(price, quantity);
   return { imageSrc, productName, price, quantity, rowPrice };
 }
