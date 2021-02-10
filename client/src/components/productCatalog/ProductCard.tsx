@@ -10,6 +10,9 @@ import CardActions from '@material-ui/core/CardActions';
 import Button from '@material-ui/core/Button';
 
 const useStyles = makeStyles({
+  link: {
+    textDecoration: 'none',
+  },
   root: {
     width: '300px',
     margin: '10px',
@@ -38,18 +41,18 @@ const ProductCard: React.FunctionComponent<ProductCardProps> = (props) => {
   const classes = useStyles();
 
   return (
-    <Card className={classes.root} key={productId}>
-      <CardHeader title={productName} />
-      <CardMedia className={classes.image} image={imageSrc} />
-      <CardContent>{description}</CardContent>
-      <CardActions>
-        <Link href={`/products/${productId}`}>
-          <a>
+    <Link href={`/products/${productId}`}>
+      <a className={classes.link}>
+        <Card className={classes.root} key={productId}>
+          <CardHeader title={productName} />
+          <CardMedia className={classes.image} image={imageSrc} />
+          <CardContent>{description}</CardContent>
+          <CardActions>
             <Button>More information</Button>
-          </a>
-        </Link>
-      </CardActions>
-    </Card>
+          </CardActions>
+        </Card>
+      </a>
+    </Link>
   );
 };
 
