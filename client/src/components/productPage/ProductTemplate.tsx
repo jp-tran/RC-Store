@@ -13,6 +13,7 @@ const useStyles = makeStyles({
 
 export interface ProductTemplateProps {
   productName: string;
+  price: string;
   imageSrc: string;
   description: string;
 }
@@ -20,13 +21,17 @@ export interface ProductTemplateProps {
 const ProductTemplate: React.FunctionComponent<ProductTemplateProps> = (
   props
 ) => {
-  const { productName, imageSrc, description } = props;
+  const { productName, price, imageSrc, description } = props;
 
   const classes = useStyles();
 
   return (
     <div className={classes.container}>
-      <ProductImage productName={productName} imageSrc={imageSrc} />
+      <ProductImage
+        productName={productName}
+        price={price}
+        imageSrc={imageSrc}
+      />
       <ProductInfo productName={productName} description={description} />
     </div>
   );
