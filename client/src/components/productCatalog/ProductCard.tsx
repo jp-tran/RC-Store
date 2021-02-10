@@ -13,6 +13,10 @@ const useStyles = makeStyles({
   root: {
     width: '300px',
     margin: '10px',
+    transition: 'transform(.2s)',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    },
   },
   image: {
     width: '300px',
