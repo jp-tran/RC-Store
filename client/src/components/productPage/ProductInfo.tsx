@@ -12,7 +12,13 @@ const useStyles = makeStyles({
     whiteSpace: 'pre-wrap', // Needed to render line breaks
     background: 'white',
   },
+  textContainer: {
+    padding: '20px',
+    fontSize: '1.5em',
+    overflow: 'scroll',
+  },
   button: {
+    marginTop: '1.5em',
     alignSelf: 'center',
   },
 });
@@ -30,7 +36,7 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
   // Need to encode product description: newlines, styling, etc.
   return (
     <Container className={classes.child}>
-      <div>
+      <div className={classes.textContainer}>
         <h1>{productName}</h1>
         <div>{longDescription}</div>
       </div>
