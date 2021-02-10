@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { useShoppingCart } from 'use-shopping-cart';
 import { fetchPostJSON } from '../../utils/api-helpers';
@@ -6,15 +6,8 @@ import { fetchPostJSON } from '../../utils/api-helpers';
 import tempProducts from '../../lib/products.json';
 
 const CartSummary = () => {
-  const [loading, setLoading] = useState(false);
-  const {
-    // formattedTotalPrice,
-    // cartCount,
-    // clearCart,
-    addItem,
-    cartDetails,
-    redirectToCheckout,
-  } = useShoppingCart();
+  // const [loading, setLoading] = useState(false);
+  const { addItem, cartDetails, redirectToCheckout } = useShoppingCart();
 
   // useEffect(() => setCartEmpty(!cartCount), [cartCount])
 
@@ -25,7 +18,7 @@ const CartSummary = () => {
     event
   ) => {
     event.preventDefault();
-    setLoading(true);
+    // setLoading(true);
 
     const response = await fetchPostJSON(
       '/api/checkout_sessions/cart',
