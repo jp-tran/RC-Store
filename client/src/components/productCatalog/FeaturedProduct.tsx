@@ -18,7 +18,6 @@ const useStyles = makeStyles({
   text: {
     margin: '0',
     padding: '5px 20px',
-    display: 'inline',
     background: 'black',
     color: 'white',
   },
@@ -27,12 +26,14 @@ const useStyles = makeStyles({
 export interface FeaturedProductProps {
   productId: string;
   productName: string;
+  price: string;
   imageSrc: string;
 }
 
 const FeaturedProduct: React.FunctionComponent<FeaturedProductProps> = ({
   productId,
   productName,
+  price,
   imageSrc,
 }) => {
   const classes = useStyles();
@@ -49,7 +50,7 @@ const FeaturedProduct: React.FunctionComponent<FeaturedProductProps> = ({
           {productName}
           <br />
         </h2>
-        <h3 className={classes.text}>$49.99 USD</h3>
+        <h3 className={classes.text}>${price}</h3>
       </div>
     </div>
   );

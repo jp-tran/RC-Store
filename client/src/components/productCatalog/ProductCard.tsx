@@ -23,6 +23,7 @@ const useStyles = makeStyles({
 export interface ProductCardProps {
   productId: string;
   productName: string;
+  price: string;
   imageSrc: string;
   description: string;
 }

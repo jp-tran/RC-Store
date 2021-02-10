@@ -63,6 +63,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
             <FeaturedProduct
               productId={productProps.productId}
               productName={productProps.productName}
+              price={productProps.price}
               imageSrc={productProps.imageSrc}
             />
           </div>
@@ -73,6 +74,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
           const {
             productId,
             productName,
+            price,
             imageSrc,
             description,
           } = productProps;
@@ -81,6 +83,7 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
             <ProductCard
               productId={productId}
               productName={productName}
+              price={price}
               imageSrc={imageSrc}
               description={description}
             />
