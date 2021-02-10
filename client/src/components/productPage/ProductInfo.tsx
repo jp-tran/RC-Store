@@ -19,12 +19,12 @@ const useStyles = makeStyles({
 
 export interface ProductInfoProps {
   productName: string;
-  description: string;
+  longDescription?: string;
 }
 
 const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
   productName,
-  description,
+  longDescription,
 }) => {
   const classes = useStyles();
   // Need to encode product description: newlines, styling, etc.
@@ -32,7 +32,7 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
     <Container className={classes.child}>
       <div>
         <h1>{productName}</h1>
-        <div>{description}</div>
+        <div>{longDescription}</div>
       </div>
       <div className={classes.button}>
         <Button color='primary'>Add to cart</Button>

@@ -26,6 +26,7 @@ export interface ProductCardProps {
   price: string;
   imageSrc: string;
   description: string;
+  longDescription?: string;
 }
 
 const ProductCard: React.FunctionComponent<ProductCardProps> = (props) => {

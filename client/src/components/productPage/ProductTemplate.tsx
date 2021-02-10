@@ -15,13 +15,13 @@ export interface ProductTemplateProps {
   productName: string;
   price: string;
   imageSrc: string;
-  description: string;
+  longDescription?: string;
 }
 
 const ProductTemplate: React.FunctionComponent<ProductTemplateProps> = (
   props
 ) => {
-  const { productName, price, imageSrc, description } = props;
+  const { productName, price, imageSrc, longDescription } = props;
 
   const classes = useStyles();
 
@@ -32,7 +32,10 @@ const ProductTemplate: React.FunctionComponent<ProductTemplateProps> = (
         price={price}
         imageSrc={imageSrc}
       />
-      <ProductInfo productName={productName} description={description} />
+      <ProductInfo
+        productName={productName}
+        longDescription={longDescription}
+      />
     </div>
   );
 };
