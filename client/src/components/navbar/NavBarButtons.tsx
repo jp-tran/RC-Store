@@ -1,7 +1,14 @@
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/client';
 
-import { Badge, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
+import {
+  Badge,
+  Button,
+  IconButton,
+  Link,
+  Menu,
+  MenuItem,
+} from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -66,7 +73,9 @@ const NavBarButtons = () => {
     <>
       <IconButton aria-label='shopping cart' color='inherit'>
         <Badge badgeContent={7} color='primary'>
-          <ShoppingCartIcon />
+          <Link href='/shoppingcart'>
+            <ShoppingCartIcon />
+          </Link>
         </Badge>
       </IconButton>
       {session ? (
