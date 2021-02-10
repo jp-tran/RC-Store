@@ -6,9 +6,14 @@ const useStyles = makeStyles({
   container: {
     width: '100%',
     position: 'relative',
+    overflow: 'hidden',
   },
   image: {
     maxWidth: '100%',
+    transition: 'transform(.2s)',
+    '&:hover': {
+      transform: 'scale(1.1)',
+    },
   },
   textContainer: {
     position: 'absolute',
