@@ -17,9 +17,23 @@ const useStyles = makeStyles({
     fontSize: '1.5em',
     overflow: 'scroll',
   },
-  button: {
+  buttonContainer: {
     marginTop: '1.5em',
     alignSelf: 'center',
+  },
+  button: {
+    background: 'black',
+    paddingLeft: '1.5em',
+    paddingRight: '1.5em',
+    color: 'white',
+    fontSize: '1.5em',
+    transition: 'transform(.2s)',
+    '&:hover': {
+      backgroundColor: 'white',
+      border: 'solid black',
+      color: 'black',
+      transform: 'scale(1.1)',
+    },
   },
 });
 
@@ -40,8 +54,8 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
         <h1>{productName}</h1>
         <div>{longDescription}</div>
       </div>
-      <div className={classes.button}>
-        <Button color='primary'>Add to cart</Button>
+      <div className={classes.buttonContainer}>
+        <Button className={classes.button}>Add to cart</Button>
       </div>
     </Container>
   );
