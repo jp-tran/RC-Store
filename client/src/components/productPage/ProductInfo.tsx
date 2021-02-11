@@ -2,6 +2,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
 
 import StyledButton from './StyledButton';
+import AddToCartButton from '../shoppingCart/AddToCartButton';
 
 const useStyles = makeStyles({
   child: {
@@ -26,15 +27,20 @@ const useStyles = makeStyles({
 
 export interface ProductInfoProps {
   name: string;
+  sku: string;
+  price: number;
+  currency: string;
   longDescription?: string;
 }
 
 const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
   name,
+  sku,
+  price,
+  currency,
   longDescription,
 }) => {
   const classes = useStyles();
-  // Need to encode product description: newlines, styling, etc.
   return (
     <Container className={classes.child}>
       <div className={classes.textContainer}>
@@ -42,7 +48,12 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
         <div>{longDescription}</div>
       </div>
       <div className={classes.buttonContainer}>
-        <StyledButton>Add to cart</StyledButton>
+        <AddToCartButton
+          name={name}
+          sku={sku}
+          price={price}
+          currency={currency}
+        />
       </div>
     </Container>
   );

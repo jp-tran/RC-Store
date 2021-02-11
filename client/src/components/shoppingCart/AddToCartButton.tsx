@@ -1,9 +1,7 @@
 import React from 'react';
-import { useShoppingCart } from 'use-shopping-cart';
+import { Product, useShoppingCart } from 'use-shopping-cart';
 
 import { Button, makeStyles } from '@material-ui/core';
-
-import tempProducts from '../../lib/products.json';
 
 const useStyles = makeStyles({
   button: {
@@ -11,17 +9,17 @@ const useStyles = makeStyles({
   },
 });
 
-const AddToCartButton = () => {
+const AddToCartButton = (item: Product) => {
   const classes = useStyles();
   const { addItem } = useShoppingCart();
 
   return (
     <Button
       className={classes.button}
-      onClick={() => addItem(tempProducts[0])}
+      onClick={() => addItem(item)}
       color='primary'
     >
-      Add Banana to Cart
+      Add to Cart
     </Button>
   );
 };
