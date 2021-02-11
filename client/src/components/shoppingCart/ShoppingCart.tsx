@@ -1,6 +1,4 @@
-import * as React from 'react';
-
-import { makeStyles } from '@material-ui/core';
+import { Button, makeStyles } from '@material-ui/core';
 
 import { ICartItem } from './CartItem';
 import Table from '@material-ui/core/Table';
@@ -13,6 +11,7 @@ import Paper from '@material-ui/core/Paper';
 
 import CheckoutButton from './CheckoutButton';
 import AddToCartButton from './AddToCartButton';
+import { useShoppingCart } from 'use-shopping-cart';
 
 const useStyles = makeStyles({
   container: {
@@ -51,9 +50,9 @@ function calculateRowPrice(price: number, quantity: number) {
 }
 
 function createRow(cartItem: ICartItem) {
-  const { productName, imageSrc, price, quantity } = cartItem;
+  const { name, image, price, quantity } = cartItem;
   const rowPrice = calculateRowPrice(+price, quantity);
-  return { imageSrc, productName, price, quantity, rowPrice };
+  return { image, name, price, quantity, rowPrice };
 }
 
 function createCartRows(cartItemList: ICartItem[]) {
@@ -66,6 +65,7 @@ function calculateSubtotal(items: number[]) {
 
 const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
   const { cartItemList } = props;
+  const { clearCart } = useShoppingCart();
   const classes = useStyles();
 
   let rows = createCartRows(cartItemList);
@@ -93,8 +93,8 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
           </TableHead>
           <TableBody>
             {rows.map((row) => (
-              <TableRow key={row.productName}>
-                <TableCell>{row.productName}</TableCell>
+              <TableRow key={row.name}>
+                <TableCell>{row.name}</TableCell>
                 <TableCell align='right'>{row.price}</TableCell>
                 <TableCell align='right'>{row.quantity}</TableCell>
                 <TableCell align='right'>{ccyFormat(row.rowPrice)}</TableCell>
@@ -121,6 +121,7 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
         </Table>
         <AddToCartButton />
         <CheckoutButton />
+        <Button onClick={() => clearCart()}>Clear</Button>
       </TableContainer>
     </div>
   );
@@ -130,8 +131,8 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
   //     {cartItemList.map((cartItemProps) => {
   //       const {
   //         productId,
-  //         productName,
-  //         imageSrc,
+  //         name,
+  //         image,
   //         description,
   //         price,
   //         quantity,
@@ -140,8 +141,8 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
   //       return (
   //         <CartItem
   //           productId={productId}
-  //           productName={productName}
-  //           imageSrc={imageSrc}
+  //           name={name}
+  //           image={image}
   //           description={description}
   //           price={price}
   //           quantity={quantity}
