@@ -6,7 +6,6 @@ declare module '@material-ui/core/styles/createBreakpoints' {
   }
 }
 
-interface PaletteColor {}
 /**
  * Breakpoints example:
  *
