@@ -5,6 +5,8 @@ declare module '@material-ui/core/styles/createBreakpoints' {
     xxl: true;
   }
 }
+
+interface PaletteColor {}
 /**
  * Breakpoints example:
  *
@@ -38,12 +40,15 @@ const theme = createMuiTheme({
       dark: '#1E6036',
       contrastText: '#fff',
     },
+<<<<<<< HEAD
     secondary: {
       light: '#63a0cf',
       main: '#3c89c3',
       dark: '#2a5f88',
       contrastText: '#fff',
     },
+=======
+>>>>>>> Create theme override for primary color
   },
 });
 
