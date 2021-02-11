@@ -25,12 +25,12 @@ const useStyles = makeStyles({
 });
 
 export interface ProductInfoProps {
-  productName: string;
+  name: string;
   longDescription?: string;
 }
 
 const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
-  productName,
+  name,
   longDescription,
 }) => {
   const classes = useStyles();
@@ -38,7 +38,7 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
   return (
     <Container className={classes.child}>
       <div className={classes.textContainer}>
-        <h1>{productName}</h1>
+        <h1>{name}</h1>
         <div>{longDescription}</div>
       </div>
       <div className={classes.buttonContainer}>
