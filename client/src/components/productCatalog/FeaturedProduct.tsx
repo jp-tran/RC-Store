@@ -29,33 +29,33 @@ const useStyles = makeStyles({
 });
 
 export interface FeaturedProductProps {
-  productId: string;
-  productName: string;
-  price: string;
-  imageSrc: string;
+  name: string;
+  sku: string;
+  price: number;
+  image?: string;
 }
 
 const FeaturedProduct: React.FunctionComponent<FeaturedProductProps> = ({
-  productId,
-  productName,
+  sku,
+  name,
   price,
-  imageSrc,
+  image,
 }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      <Link href={`/products/${productId}`}>
+      <Link href={`/products/${sku}`}>
         <a>
-          <img src={imageSrc} className={classes.image} />
+          <img src={image} className={classes.image} />
         </a>
       </Link>
 
       <div className={classes.textContainer}>
         <h2 className={classes.text}>
-          {productName}
+          {name}
           <br />
         </h2>
-        <h3 className={classes.text}>${price}</h3>
+        <h3 className={classes.text}>${price.toString()}</h3>
       </div>
     </div>
   );

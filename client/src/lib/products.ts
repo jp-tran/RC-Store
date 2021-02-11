@@ -1,10 +1,12 @@
+import products from './products.json';
+
 import { ProductCardProps } from '../components/productCatalog/ProductCard';
 
 export interface ProductPath {
   params: { id: string };
 }
 
-const getProducts = (): ProductCardProps[] => [
+/* const getProducts = (): ProductCardProps[] => [
   {
     productId: '0',
     productName: 'RC t-shirt',
@@ -59,13 +61,13 @@ Note: Batch t-shirts are free, but our extra merch items are priced at our cost,
     
 Note: Batch t-shirts are free, but our extra merch items are priced at our cost, as we unfortunately can’t afford to offer them for free.`,
   },
-];
+]; */
 
 export const getAllProductPaths = () => {
-  const products: ProductCardProps[] = getProducts();
+  // const products: ProductCardProps[] = getProducts();
   const productPaths: ProductPath[] = products.map((product) => ({
     params: {
-      id: product.productId,
+      id: product.sku,
     },
   }));
 
@@ -73,8 +75,6 @@ export const getAllProductPaths = () => {
 };
 
 export const getProductData = (id: string): ProductCardProps => {
-  const products = getProducts();
-  return products.filter((product) => product.productId == id)[0];
+  // const products = getProducts();
+  return products.filter((product) => product.sku == id)[0];
 };
-
-export default getProducts;

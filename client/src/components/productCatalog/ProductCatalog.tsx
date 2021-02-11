@@ -59,10 +59,10 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
         return (
           <div className={style}>
             <FeaturedProduct
-              productId={productProps.productId}
-              productName={productProps.productName}
+              sku={productProps.sku}
+              name={productProps.name}
               price={productProps.price}
-              imageSrc={productProps.imageSrc}
+              image={productProps.image}
             />
           </div>
         );
@@ -70,20 +70,22 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
       <div className={classes.container}>
         {productList.map((productProps) => {
           const {
-            productId,
-            productName,
+            sku,
+            name,
             price,
-            imageSrc,
+            image,
+            currency,
             description,
           } = productProps;
 
           return (
             <ProductCard
-              productId={productId}
-              productName={productName}
+              sku={sku}
+              name={name}
               price={price}
-              imageSrc={imageSrc}
+              image={image}
               description={description}
+              currency={currency}
             />
           );
         })}

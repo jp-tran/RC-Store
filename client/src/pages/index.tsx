@@ -1,7 +1,7 @@
 import Layout from '../components/Layout';
 import ProductCatalog from '../components/productCatalog/ProductCatalog';
 import { ProductCardProps } from '../components/productCatalog/ProductCard';
-import getProducts from '../lib/products';
+import products from '../lib/products.json';
 
 const IndexPage: React.FunctionComponent<{ products: ProductCardProps[] }> = ({
   products,
@@ -13,7 +13,6 @@ const IndexPage: React.FunctionComponent<{ products: ProductCardProps[] }> = ({
 );
 
 export async function getStaticProps() {
-  const products = getProducts();
   return {
     props: {
       products,
