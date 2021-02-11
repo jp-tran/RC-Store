@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { Button, makeStyles } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core';
 
 import { ICartItem } from './CartItem';
 import Table from '@material-ui/core/Table';
@@ -10,6 +10,9 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+
+import CheckoutButton from './CheckoutButton';
+import AddToCartButton from './AddToCartButton';
 
 const useStyles = makeStyles({
   container: {
@@ -116,7 +119,8 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
             </TableRow>
           </TableBody>
         </Table>
-        <Button className={classes.checkout}>Checkout</Button>
+        <AddToCartButton />
+        <CheckoutButton />
       </TableContainer>
     </div>
   );
