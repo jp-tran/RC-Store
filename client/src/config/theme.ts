@@ -5,6 +5,8 @@ declare module '@material-ui/core/styles/createBreakpoints' {
     xxl: true;
   }
 }
+
+interface PaletteColor {}
 /**
  * Breakpoints example:
  *
@@ -29,6 +31,14 @@ const theme = createMuiTheme({
   typography: {
     button: {
       textTransform: 'none',
+    },
+  },
+  palette: {
+    primary: {
+      light: '#9EDFB5',
+      main: '#3dc06c',
+      dark: '#1E6036',
+      contrastText: '#fff',
     },
   },
 });
