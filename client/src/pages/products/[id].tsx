@@ -15,13 +15,14 @@ export interface ProductPageProps {
 const ProductPage: React.FunctionComponent<ProductPageProps> = ({
   productProps,
 }) => {
-  const { productName, imageSrc, description } = productProps;
+  const { productName, price, imageSrc, longDescription } = productProps;
   return (
     <Layout>
       <ProductTemplate
         productName={productName}
+        price={price}
         imageSrc={imageSrc}
-        description={description}
+        longDescription={longDescription}
       />
     </Layout>
   );
