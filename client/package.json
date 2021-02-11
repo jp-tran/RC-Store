@@ -17,6 +17,7 @@
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "stripe": "^8.135.0",
+    "swr": "^0.4.2",
     "use-shopping-cart": "^2.4.1"
   },
   "devDependencies": {
