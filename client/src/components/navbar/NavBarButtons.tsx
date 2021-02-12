@@ -1,14 +1,9 @@
 import React from 'react';
 import { signIn, signOut, useSession } from 'next-auth/client';
+import Link from 'next/link';
+import { useShoppingCart } from 'use-shopping-cart';
 
-import {
-  Badge,
-  Button,
-  IconButton,
-  Link,
-  Menu,
-  MenuItem,
-} from '@material-ui/core';
+import { Badge, Button, IconButton, Menu, MenuItem } from '@material-ui/core';
 import { createStyles, makeStyles } from '@material-ui/core/styles';
 import AccountIcon from '@material-ui/icons/AccountCircle';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
@@ -46,6 +41,8 @@ const NavBarButtons = () => {
     handleMenuClose();
   };
 
+  const { cartCount } = useShoppingCart();
+
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
@@ -72,7 +69,7 @@ const NavBarButtons = () => {
   return (
     <>
       <IconButton aria-label='shopping cart' color='inherit'>
-        <Badge badgeContent={7} color='primary'>
+        <Badge badgeContent={cartCount} color='secondary'>
           <Link href='/shoppingcart'>
             <ShoppingCartIcon />
           </Link>
