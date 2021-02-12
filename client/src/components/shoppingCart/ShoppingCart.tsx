@@ -10,7 +10,6 @@ import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
 import CheckoutButton from './CheckoutButton';
-import AddToCartButton from './AddToCartButton';
 import { useShoppingCart } from 'use-shopping-cart';
 
 const useStyles = makeStyles({
@@ -119,7 +118,6 @@ const ShoppingCart: React.FunctionComponent<ShoppingCartProps> = (props) => {
             </TableRow>
           </TableBody>
         </Table>
-        <AddToCartButton />
         <CheckoutButton />
         <Button onClick={() => clearCart()}>Clear</Button>
       </TableContainer>
