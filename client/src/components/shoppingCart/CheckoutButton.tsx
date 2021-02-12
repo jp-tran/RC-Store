@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   // Theme from RC
   checkoutButton: {
     width: 'auto',
-    margin: '10px',
+    margin: '10px  0 10px 10px',
     border: '1px solid rgba(42,45,45,0.6)',
     color: '#23a050',
     borderColor: '#3dc06c',

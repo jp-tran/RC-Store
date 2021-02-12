@@ -1,24 +1,11 @@
+import { NextPage } from 'next';
 import Layout from '../../components/Layout';
-import { ICartItem } from '../../components/shoppingCart/CartItem';
-import ShoppingCart from '../../components/shoppingCart/ShoppingCart';
-import getCartItems from '../../lib/cartitems';
+import CartSummary from '../../components/shoppingCart/CartSummary';
 
-const ShoppingCartPage: React.FunctionComponent<{ cartItems: ICartItem[] }> = ({
-  cartItems,
-}) => (
+const ShoppingCartPage: NextPage = () => (
   <Layout title='Shopping Cart'>
-    <h1>Shopping Cart</h1>
-    <ShoppingCart cartItemList={cartItems} />
+    <CartSummary />
   </Layout>
 );
-
-export async function getStaticProps() {
-  const cartItems = getCartItems();
-  return {
-    props: {
-      cartItems,
-    },
-  };
-}
 
 export default ShoppingCartPage;
