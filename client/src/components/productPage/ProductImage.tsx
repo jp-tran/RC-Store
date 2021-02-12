@@ -35,29 +35,29 @@ const useStyles = makeStyles({
 });
 
 export interface ProductImageProps {
-  productName: string;
-  price: string;
-  imageSrc: string;
+  name: string;
+  price: number;
+  image?: string;
 }
 
 const ProductImage: React.FunctionComponent<ProductImageProps> = ({
-  productName,
+  name,
   price,
-  imageSrc,
+  image,
 }) => {
   const classes = useStyles();
 
   return (
     <div className={classes.child}>
       <div className={classes.imageContainer}>
-        <img className={classes.image} src={imageSrc} />
+        <img className={classes.image} src={image} />
       </div>
       <div className={classes.textContainer}>
         <h2 className={classes.text}>
-          {productName}
+          {name}
           <br />
         </h2>
-        <h3 className={classes.text}>${price}</h3>
+        <h3 className={classes.text}>${price.toString()}</h3>
       </div>
     </div>
   );

@@ -1,11 +1,24 @@
-import { Provider } from 'next-auth/client';
+import { Provider as AuthProvider } from 'next-auth/client';
+import { Elements } from '@stripe/react-stripe-js';
+import { ThemeProvider } from '@material-ui/core/styles';
+
+import getStripe from '../utils/get-stripe';
+import CartProvider from '../components/shoppingCart/CartProvider';
+import customTheme from '../config/theme';
+
 import { AppProps } from 'next/app';
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <Provider session={pageProps.session}>
-      <Component {...pageProps} />
-    </Provider>
+    <AuthProvider session={pageProps.session}>
+      <Elements stripe={getStripe()}>
+        <CartProvider>
+          <ThemeProvider theme={customTheme}>
+            <Component {...pageProps} />
+          </ThemeProvider>
+        </CartProvider>
+      </Elements>
+    </AuthProvider>
   );
 };
 

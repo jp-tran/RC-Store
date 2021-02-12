@@ -31,24 +31,25 @@ const useStyles = makeStyles({
 });
 
 export interface ProductCardProps {
-  productId: string;
-  productName: string;
-  price: string;
-  imageSrc: string;
-  description: string;
+  name: string;
+  description?: string;
+  sku: string;
+  price: number;
+  currency: string;
+  image?: string;
   longDescription?: string;
 }
 
 const ProductCard: React.FunctionComponent<ProductCardProps> = (props) => {
-  const { productId, productName, imageSrc, description } = props;
+  const { sku, name, image, description } = props;
   const classes = useStyles();
 
   return (
-    <Link href={`/products/${productId}`}>
+    <Link href={`/products/${sku}`}>
       <a className={classes.link}>
-        <Card className={classes.root} key={productId}>
-          <CardHeader title={productName} />
-          <CardMedia className={classes.image} image={imageSrc} />
+        <Card className={classes.root} key={sku}>
+          <CardHeader title={name} />
+          <CardMedia className={classes.image} image={image} />
           <CardContent>{description}</CardContent>
           <CardActions className={classes.buttonContainer}>
             <StyledButton>More information</StyledButton>
