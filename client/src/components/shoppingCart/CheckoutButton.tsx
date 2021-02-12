@@ -24,8 +24,9 @@ const CheckoutButton = () => {
 
   const { cartCount, cartDetails, redirectToCheckout } = useShoppingCart();
 
-  useEffect(() => setCartEmpty(!cartCount), [cartCount]);
-  console.log(cartCount);
+  useEffect(() => {
+    setCartEmpty(!cartCount);
+  }, [cartCount]);
 
   const handleCheckout = async (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>
