@@ -49,10 +49,12 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
       </div>
       <div className={classes.buttonContainer}>
         <AddToCartButton
-          name={name}
-          sku={sku}
-          price={price}
-          currency={currency}
+          item={{
+            name,
+            sku,
+            price,
+            currency,
+          }}
         />
       </div>
     </Container>

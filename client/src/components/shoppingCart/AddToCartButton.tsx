@@ -9,7 +9,7 @@ const useStyles = makeStyles({
   },
 });
 
-const AddToCartButton = (item: Product) => {
+const AddToCartButton = ({ item }: { item: Product }) => {
   const classes = useStyles();
   const { addItem } = useShoppingCart();
 
