@@ -1,7 +1,6 @@
 import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
 
-import StyledButton from './StyledButton';
 import AddToCartButton from '../shoppingCart/AddToCartButton';
 
 const useStyles = makeStyles({
