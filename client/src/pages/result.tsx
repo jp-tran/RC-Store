@@ -7,6 +7,7 @@ import ClearCart from '../components/shoppingCart/ClearCart';
 
 import { fetchGetJSON } from '../utils/api-helpers';
 import useSWR from 'swr';
+import Container from '@material-ui/core/Container';
 
 const ResultPage: NextPage = () => {
   const router = useRouter();
@@ -24,13 +25,13 @@ const ResultPage: NextPage = () => {
 
   return (
     <Layout title='Checkout Payment Result'>
-      <div className='page-container'>
+      <Container maxWidth='lg'>
         <h1>Checkout Payment Result</h1>
-        <h2>Status: {data?.payment_intent?.status ?? 'loading...'}</h2>
-        <h3>CheckoutSession response:</h3>
-        <PrintObject content={data ?? 'loading...'} />
+        <h3>Status: {data?.payment_intent?.status ?? 'loading...'}</h3>
+        <h3>Thank you for your purchase!</h3>
+        {/* <PrintObject content={data ?? 'loading...'} /> */}
         <ClearCart />
-      </div>
+      </Container>
     </Layout>
   );
 };
