@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import { makeStyles } from '@material-ui/core';
+import { Product } from 'use-shopping-cart';
 
 const useStyles = makeStyles({
   container: {
@@ -35,13 +36,11 @@ export interface FeaturedProductProps {
   image?: string;
 }
 
-const FeaturedProduct: React.FunctionComponent<FeaturedProductProps> = ({
-  sku,
-  name,
-  price,
-  image,
-}) => {
+const FeaturedProduct = ({ product }: { product: Product }) => {
   const classes = useStyles();
+
+  const { name, sku, image, price } = product;
+
   return (
     <div className={classes.container}>
       <Link href={`/products/${sku}`}>

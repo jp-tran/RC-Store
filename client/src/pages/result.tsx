@@ -29,7 +29,7 @@ const ResultPage: NextPage = () => {
         <h1>Checkout Payment Result</h1>
         <h3>Status: {data?.payment_intent?.status ?? 'loading...'}</h3>
         <h3>Thank you for your purchase!</h3>
-        {/* <PrintObject content={data ?? 'loading...'} /> */}
+        <PrintObject content={data ?? 'loading...'} />
         <ClearCart />
       </Container>
     </Layout>

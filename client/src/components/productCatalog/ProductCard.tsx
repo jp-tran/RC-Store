@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { Product } from 'use-shopping-cart';
 
 import { Card, makeStyles } from '@material-ui/core';
 import CardHeader from '@material-ui/core/CardHeader';
@@ -40,8 +41,8 @@ export interface ProductCardProps {
   longDescription?: string;
 }
 
-const ProductCard: React.FunctionComponent<ProductCardProps> = (props) => {
-  const { sku, name, image, description } = props;
+const ProductCard = ({ product }: { product: Product }) => {
+  const { sku, name, image, description } = product;
   const classes = useStyles();
 
   return (

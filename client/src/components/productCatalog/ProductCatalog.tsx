@@ -1,7 +1,8 @@
 import { makeStyles } from '@material-ui/core';
 
-import ProductCard, { ProductCardProps } from './ProductCard';
+import ProductCard from './ProductCard';
 import FeaturedProduct from './FeaturedProduct';
+import { Product } from 'use-shopping-cart';
 
 const useStyles = makeStyles({
   grid: {
@@ -32,18 +33,11 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ProductCatalogProps {
-  productList: ProductCardProps[];
-}
-
-const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
-  props
-) => {
-  const { productList } = props;
+const ProductCatalog = ({ productList }: { productList: Product[] }) => {
   const classes = useStyles();
 
   interface FeaturedProductAndStyle {
-    productProps: ProductCardProps;
+    productProps: Product;
     style: string;
   }
 
@@ -58,36 +52,13 @@ const ProductCatalog: React.FunctionComponent<ProductCatalogProps> = (
       {featuredProducts.map(({ productProps, style }) => {
         return (
           <div className={style}>
-            <FeaturedProduct
-              sku={productProps.sku}
-              name={productProps.name}
-              price={productProps.price}
-              image={productProps.image}
-            />
+            <FeaturedProduct product={productProps} />
           </div>
         );
       })}
       <div className={classes.container}>
         {productList.map((productProps) => {
-          const {
-            sku,
-            name,
-            price,
-            image,
-            currency,
-            description,
-          } = productProps;
-
-          return (
-            <ProductCard
-              sku={sku}
-              name={name}
-              price={price}
-              image={image}
-              description={description}
-              currency={currency}
-            />
-          );
+          return <ProductCard product={productProps} />;
         })}
       </div>
     </div>

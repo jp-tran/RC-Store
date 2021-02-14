@@ -2,6 +2,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
 
 import AddToCartButton from '../shoppingCart/AddToCartButton';
+import { ProductCardProps } from '../productCatalog/ProductCard';
 
 const useStyles = makeStyles({
   child: {
@@ -32,14 +33,9 @@ export interface ProductInfoProps {
   longDescription?: string;
 }
 
-const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
-  name,
-  sku,
-  price,
-  currency,
-  longDescription,
-}) => {
+const ProductInfo = ({ product }: { product: ProductCardProps }) => {
   const classes = useStyles();
+  const { name, longDescription } = product;
   return (
     <Container className={classes.child}>
       <div className={classes.textContainer}>
@@ -47,14 +43,7 @@ const ProductInfo: React.FunctionComponent<ProductInfoProps> = ({
         <div>{longDescription}</div>
       </div>
       <div className={classes.buttonContainer}>
-        <AddToCartButton
-          item={{
-            name,
-            sku,
-            price,
-            currency,
-          }}
-        />
+        <AddToCartButton item={product} />
       </div>
     </Container>
   );

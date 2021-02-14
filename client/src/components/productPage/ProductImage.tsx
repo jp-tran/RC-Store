@@ -1,4 +1,5 @@
 import { makeStyles } from '@material-ui/core';
+import { ProductCardProps } from '../productCatalog/ProductCard';
 
 const useStyles = makeStyles({
   child: {
@@ -40,12 +41,9 @@ export interface ProductImageProps {
   image?: string;
 }
 
-const ProductImage: React.FunctionComponent<ProductImageProps> = ({
-  name,
-  price,
-  image,
-}) => {
+const ProductImage = ({ product }: { product: ProductCardProps }) => {
   const classes = useStyles();
+  const { name, price, image } = product;
 
   return (
     <div className={classes.child}>
