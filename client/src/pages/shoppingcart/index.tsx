@@ -1,10 +1,10 @@
 import { NextPage } from 'next';
 import Layout from '../../components/Layout';
-import CartSummary from '../../components/shoppingCart/CartSummary';
+import CartSummaryNoSSR from '../../components/shoppingCart/CartSummaryNoSSR';
 
 const ShoppingCartPage: NextPage = () => (
   <Layout title='Shopping Cart'>
-    <CartSummary />
+    <CartSummaryNoSSR />
   </Layout>
 );
 
