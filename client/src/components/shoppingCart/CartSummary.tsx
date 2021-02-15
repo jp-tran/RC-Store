@@ -82,7 +82,10 @@ const CartSummary = () => {
 
     // all of your basic product data still exists (i.e. name, image, price)
     cart.push(
-      <div style={{ width: '100%', maxWidth: '768px', marginBottom: '1rem' }}>
+      <div
+        style={{ width: '100%', maxWidth: '768px', marginBottom: '1rem' }}
+        key={cartEntry.sku}
+      >
         <div className={`${classes.subContainer} ${classes.itemSummary}`}>
           <div className={classes.leftBlock}>
             <Typography>{cartEntry.name}</Typography>

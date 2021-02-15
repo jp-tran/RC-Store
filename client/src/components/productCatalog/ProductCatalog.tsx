@@ -51,14 +51,14 @@ const ProductCatalog = ({ productList }: { productList: ProductProps[] }) => {
     <div className={classes.grid}>
       {featuredProducts.map(({ productProps, style }) => {
         return (
-          <div className={style}>
+          <div className={style} key={productProps.sku}>
             <FeaturedProduct product={productProps} />
           </div>
         );
       })}
       <div className={classes.container}>
         {productList.map((productProps) => {
-          return <ProductCard product={productProps} />;
+          return <ProductCard product={productProps} key={productProps.sku} />;
         })}
       </div>
     </div>
