@@ -1,9 +1,7 @@
 import React from 'react';
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { ServerStyleSheets } from '@material-ui/styles';
-import { createMuiTheme, responsiveFontSizes } from '@material-ui/core/styles';
-
-const theme = responsiveFontSizes(createMuiTheme());
+import theme from '../config/theme';
 
 class MyDocument extends Document {
   render() {
@@ -61,10 +59,8 @@ MyDocument.getInitialProps = async (ctx) => {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
     styles: [
-      <React.Fragment key='styles'>
-        {initialProps.styles}
-        {sheets.getStyleElement()}
-      </React.Fragment>,
+      ...React.Children.toArray(initialProps.styles),
+      sheets.getStyleElement(),
     ],
   };
 };
