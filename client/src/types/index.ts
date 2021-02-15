@@ -4,7 +4,13 @@
 //
 // import { Example } from 'path/to/types';
 
+import { Product } from 'use-shopping-cart';
+
 export interface Example {
   id: number;
   name: string;
+}
+
+export interface ProductProps extends Product {
+  longDescription?: string;
 }

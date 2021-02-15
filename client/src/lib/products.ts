@@ -1,6 +1,5 @@
+import { ProductProps } from '../types';
 import products from './products.json';
-
-import { ProductCardProps } from '../components/productCatalog/ProductCard';
 
 export interface ProductPath {
   params: { id: string };
@@ -74,7 +73,7 @@ export const getAllProductPaths = () => {
   return productPaths;
 };
 
-export const getProductData = (id: string): ProductCardProps => {
+export const getProductData = (id: string): ProductProps => {
   // const products = getProducts();
   return products.filter((product) => product.sku == id)[0];
 };

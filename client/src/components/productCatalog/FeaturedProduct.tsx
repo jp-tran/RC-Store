@@ -1,7 +1,8 @@
 import Link from 'next/link';
 
 import { makeStyles } from '@material-ui/core';
-import { Product } from 'use-shopping-cart';
+
+import { ProductProps } from '../../types';
 
 const useStyles = makeStyles({
   container: {
@@ -36,7 +37,7 @@ export interface FeaturedProductProps {
   image?: string;
 }
 
-const FeaturedProduct = ({ product }: { product: Product }) => {
+const FeaturedProduct = ({ product }: { product: ProductProps }) => {
   const classes = useStyles();
 
   const { name, sku, image, price } = product;

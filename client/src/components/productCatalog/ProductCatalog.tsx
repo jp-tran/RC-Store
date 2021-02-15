@@ -2,7 +2,7 @@ import { makeStyles } from '@material-ui/core';
 
 import ProductCard from './ProductCard';
 import FeaturedProduct from './FeaturedProduct';
-import { Product } from 'use-shopping-cart';
+import { ProductProps } from '../../types';
 
 const useStyles = makeStyles({
   grid: {
@@ -33,11 +33,11 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductCatalog = ({ productList }: { productList: Product[] }) => {
+const ProductCatalog = ({ productList }: { productList: ProductProps[] }) => {
   const classes = useStyles();
 
   interface FeaturedProductAndStyle {
-    productProps: Product;
+    productProps: ProductProps;
     style: string;
   }
 

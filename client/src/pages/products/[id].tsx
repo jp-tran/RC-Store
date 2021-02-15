@@ -1,5 +1,3 @@
-import { ProductCardProps } from '../../components/productCatalog/ProductCard';
-
 import Layout from '../../components/Layout';
 import ProductTemplate from '../../components/productPage/ProductTemplate';
 import {
@@ -7,9 +5,10 @@ import {
   ProductPath,
   getProductData,
 } from '../../lib/products';
+import { ProductProps } from '../../types';
 
 export interface ProductPageProps {
-  productProps: ProductCardProps;
+  productProps: ProductProps;
 }
 
 const ProductPage: React.FunctionComponent<ProductPageProps> = ({
@@ -49,7 +48,7 @@ export async function getStaticPaths(): Promise<{
 
 export async function getStaticProps({
   params,
-}: ProductPath): Promise<{ props: { productProps: ProductCardProps } }> {
+}: ProductPath): Promise<{ props: { productProps: ProductProps } }> {
   const productProps = getProductData(params.id);
   return {
     props: {

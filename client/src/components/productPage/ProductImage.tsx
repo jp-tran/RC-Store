@@ -1,5 +1,5 @@
 import { makeStyles } from '@material-ui/core';
-import { ProductCardProps } from '../productCatalog/ProductCard';
+import { ProductProps } from '../../types';
 
 const useStyles = makeStyles({
   child: {
@@ -41,7 +41,7 @@ export interface ProductImageProps {
   image?: string;
 }
 
-const ProductImage = ({ product }: { product: ProductCardProps }) => {
+const ProductImage = ({ product }: { product: ProductProps }) => {
   const classes = useStyles();
   const { name, price, image } = product;
 

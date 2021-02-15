@@ -1,6 +1,6 @@
 import { makeStyles } from '@material-ui/core';
+import { ProductProps } from '../../types';
 
-import { ProductCardProps } from '../productCatalog/ProductCard';
 import ProductImage from './ProductImage';
 import ProductInfo from './ProductInfo';
 
@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   },
 });
 
-const ProductTemplate = ({ product }: { product: ProductCardProps }) => {
+const ProductTemplate = ({ product }: { product: ProductProps }) => {
   const classes = useStyles();
 
   return (

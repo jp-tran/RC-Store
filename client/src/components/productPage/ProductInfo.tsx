@@ -2,7 +2,7 @@ import Container from '@material-ui/core/Container';
 import { makeStyles } from '@material-ui/core';
 
 import AddToCartButton from '../shoppingCart/AddToCartButton';
-import { ProductCardProps } from '../productCatalog/ProductCard';
+import { ProductProps } from '../../types';
 
 const useStyles = makeStyles({
   child: {
@@ -33,7 +33,7 @@ export interface ProductInfoProps {
   longDescription?: string;
 }
 
-const ProductInfo = ({ product }: { product: ProductCardProps }) => {
+const ProductInfo = ({ product }: { product: ProductProps }) => {
   const classes = useStyles();
   const { name, longDescription } = product;
   return (
