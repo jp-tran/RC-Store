@@ -6,6 +6,7 @@ import { Product } from './entities/Product';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { HelloResolver } from './resolvers/hello';
+import { ProductResolver } from './resolvers/product';
 
 const main = async () => {
   await createConnection({
@@ -25,7 +26,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloResolver],
+      resolvers: [HelloResolver, ProductResolver],
       validate: false,
     }),
   });

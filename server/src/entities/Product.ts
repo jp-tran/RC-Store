@@ -31,7 +31,7 @@ export class Product extends BaseEntity {
   price!: number;
 
   @Field()
-  @Column({ default: 'USD' })
+  @Column()
   currency!: string;
 
   @Field()
@@ -45,6 +45,10 @@ export class Product extends BaseEntity {
   @Field()
   @Column()
   seller: number; // need to check this
+
+  @Field()
+  @Column()
+  isRCMerch: boolean;
 
   @Field()
   @CreateDateColumn()
