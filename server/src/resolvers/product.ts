@@ -87,7 +87,7 @@ export class ProductResolver {
   // need to check if request is authorized before deleting product
   @Mutation(() => Boolean)
   async deleteProduct(@Arg('sku', () => String) sku: string): Promise<boolean> {
-    await Product.delete({ sku });
-    return true;
+    const deleteResult = await Product.delete({ sku });
+    return deleteResult.affected != 0; // returns true if an item was deleted
   }
 }
