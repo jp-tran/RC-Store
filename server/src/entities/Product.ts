@@ -44,7 +44,7 @@ export class Product extends BaseEntity {
 
   @Field()
   @Column()
-  seller: number; // need to check this
+  sellerID: number; // need to check this
 
   @Field()
   @Column()
