@@ -25,7 +25,7 @@ class NewProduct {
   image?: string;
 
   @Field()
-  seller: number; // need to check this
+  sellerID: number; // need to check this
 
   @Field()
   isRCMerch: boolean;
@@ -61,8 +61,31 @@ class UpdatedProduct {
 @Resolver()
 export class ProductResolver {
   @Query(() => [Product])
-  async products(): Promise<Product[]> {
-    return Product.find();
+  products(
+    @Arg('isRecurseCenterMerch', () => Boolean, { nullable: true })
+    isRecurseCenterMerch?: boolean,
+    @Arg('sellerID', () => Number, { nullable: true })
+    sellerID?: number
+  ): Promise<Product[]> {
+    let searchQueries: any = {};
+
+    if (isRecurseCenterMerch != undefined) {
+      searchQueries.isRCMerch = isRecurseCenterMerch;
+    }
+
+    if (sellerID != undefined) {
+      searchQueries.sellerID = sellerID;
+    }
+
+    return Product.find({ where: searchQueries });
+  }
+
+  @Query(() => Product)
+  async product(
+    @Arg('sku', () => String)
+    sku: string
+  ): Promise<Product | undefined> {
+    return await Product.findOne(sku);
   }
 
   // need to check if user is authorized before creating
