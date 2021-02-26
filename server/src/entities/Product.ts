@@ -51,6 +51,14 @@ export class Product extends BaseEntity {
   isRCMerch: boolean;
 
   @Field()
+  @Column({ default: '' })
+  condition: string;
+
+  @Field()
+  @Column({ default: '' })
+  location: string;
+
+  @Field()
   @CreateDateColumn()
   datePosted: Date;
 

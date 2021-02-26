@@ -29,6 +29,12 @@ class NewProduct {
 
   @Field()
   isRCMerch: boolean;
+
+  @Field()
+  location: string;
+
+  @Field()
+  condition: string;
 }
 
 @InputType()
@@ -56,6 +62,12 @@ class UpdatedProduct {
 
   @Field({ nullable: true })
   image?: string;
+
+  @Field({ nullable: true })
+  location?: string;
+
+  @Field({ nullable: true })
+  condition?: string;
 }
 
 @Resolver()
