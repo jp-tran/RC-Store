@@ -1,22 +1,8 @@
-import { gql } from '@apollo/client';
 import Layout from '../components/Layout';
 import ProductCatalog from '../components/productCatalog/ProductCatalog';
 import { initializeApollo } from '../lib/apolloClient';
 import { ProductProps } from '../types';
-
-const GET_ALL_PRODUCTS = gql`
-  query Products($isRecurseCenterMerch: Boolean) {
-    products(isRecurseCenterMerch: $isRecurseCenterMerch) {
-      sku
-      name
-      price
-      currency
-      image
-      description
-      longDescription
-    }
-  }
-`;
+import GET_ALL_PRODUCTS from '../graphql/queries/getRCProducts';
 
 const IndexPage = ({ products }: { products: ProductProps[] }) => {
   return (
