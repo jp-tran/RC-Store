@@ -16,7 +16,7 @@ const useStyles = makeStyles(() =>
       fontSize: '1rem',
       fontWeight: 400,
       display: 'flex',
-      justifyContent: 'center',
+      justifyContent: 'left',
     },
   })
 );
@@ -61,6 +61,15 @@ const NavBarButtons = () => {
         classes={{ root: classes.buttonRoot }}
       >
         Account
+      </MenuItem>
+      <MenuItem
+        onClick={handleMenuClose}
+        component={NextLink}
+        href='/account/my-products'
+        disableFocusRipple={true}
+        classes={{ root: classes.buttonRoot }}
+      >
+        My Products
       </MenuItem>
       <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
     </Menu>
