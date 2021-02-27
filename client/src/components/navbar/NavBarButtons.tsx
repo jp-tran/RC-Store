@@ -78,7 +78,7 @@ const NavBarButtons = () => {
   return (
     <>
       <IconButton aria-label='shopping cart' color='inherit'>
-        <Badge badgeContent={cartCount} color='secondary'>
+        <Badge badgeContent={cartCount} color='secondary' showZero={true}>
           <Link href='/shoppingcart'>
             <ShoppingCartIcon />
           </Link>
