@@ -20,7 +20,7 @@ const GET_PRODUCT = gql`
 
 const ProductPage = ({ product }: { product: ProductProps }) => {
   return (
-    <Layout>
+    <Layout title={product.name}>
       <ProductTemplate product={product} />
     </Layout>
   );

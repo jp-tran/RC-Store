@@ -16,7 +16,7 @@ const AccountPage = () => {
 
   if (session) {
     return (
-      <Layout title='Your Account | RC Store'>
+      <Layout title='Account | Recurse Store'>
         <Account session={session} />
       </Layout>
     );

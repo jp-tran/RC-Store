@@ -6,7 +6,7 @@ import GET_ALL_PRODUCTS from '../graphql/queries/getRCProducts';
 
 const IndexPage = ({ products }: { products: ProductProps[] }) => {
   return (
-    <Layout title='RC Store'>
+    <Layout title='Recurse Store'>
       <h1>Home</h1>
       <ProductCatalog productList={products} />
     </Layout>

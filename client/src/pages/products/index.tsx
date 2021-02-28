@@ -6,7 +6,7 @@ import { ProductProps } from '../../types';
 const ProductsPage: React.FunctionComponent<{
   products: ProductProps[];
 }> = ({ products }) => (
-  <Layout title='RC Store'>
+  <Layout title='Products | Recurse Store'>
     <h1>Products</h1>
     <ProductCatalog productList={products} />
   </Layout>
