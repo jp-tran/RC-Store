@@ -21,7 +21,15 @@ const Layout = ({ children, title = 'RC Store' }: Props) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <NavBar />
-      {children}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+        }}
+      >
+        {children}
+      </div>
       <footer>
         <Footer />
       </footer>
