@@ -65,11 +65,11 @@ const NavBarButtons = () => {
       <MenuItem
         onClick={handleMenuClose}
         component={NextLink}
-        href='/account/my-products'
+        href='/account/my-listings'
         disableFocusRipple={true}
         classes={{ root: classes.buttonRoot }}
       >
-        My Products
+        My Listings
       </MenuItem>
       <MenuItem onClick={handleSignOut}>Sign Out</MenuItem>
     </Menu>

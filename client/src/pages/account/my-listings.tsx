@@ -3,8 +3,9 @@ import { useSession } from 'next-auth/client';
 import { useQuery } from '@apollo/client';
 import MyProducts from '../../components/account/MyProducts';
 import Layout from '../../components/Layout';
-import GET_MY_PRODUCTS from '../../graphql/queries/getMyProducts';
+import GET_MY_LISTINGS from '../../graphql/queries/getMyListings';
 import { ProductProps } from '../../types';
+import gradients from '../../config/gradients';
 
 const MyProductsPage = () => {
   const [session, loading] = useSession();
@@ -18,18 +19,18 @@ const MyProductsPage = () => {
   }
 
   if (session) {
-    const { loading, data } = useQuery(GET_MY_PRODUCTS, {
-      variables: { sellerID: 1 },
+    const { loading, data } = useQuery(GET_MY_LISTINGS, {
+      variables: { sellerID: 4279.0 },
     });
 
     if (loading) {
       return <p>Loading...</p>;
     }
 
-    const products: ProductProps[] = data.products;
+    const products: ProductProps[] = data.listings;
 
     return (
-      <Layout title='Account | My Products'>
+      <Layout title='Account | My Products' gradient={gradients.pink}>
         <MyProducts products={products} />
       </Layout>
     );
