@@ -1,7 +1,8 @@
 import React, { ReactNode } from 'react';
 import Head from 'next/head';
+import gradients from '../config/gradients';
 
-import { CssBaseline } from '@material-ui/core';
+import { createStyles, CssBaseline, makeStyles } from '@material-ui/core';
 
 import NavBar from './navbar/NavBar';
 import Footer from './footer/Footer';
@@ -9,11 +10,39 @@ import Footer from './footer/Footer';
 interface Props {
   children?: ReactNode;
   title?: string;
+  gradient?: string;
 }
 
-const Layout = ({ children, title = 'RC Store' }: Props) => {
+const Layout = ({
+  children,
+  title = 'Recurse Store',
+  gradient = gradients.blue,
+}: Props) => {
+  const useStyles = makeStyles(() =>
+    createStyles({
+      container: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        '&::before': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          bottom: 0,
+          left: 0,
+          right: 0,
+          zIndex: -100,
+          width: '100%',
+          height: '90vh',
+          background: gradient,
+        },
+      },
+    })
+  );
+
+  const classes = useStyles();
   return (
-    <div>
+    <div style={{ position: 'relative' }}>
       <CssBaseline />
       <Head>
         <title>{title}</title>
@@ -21,15 +50,7 @@ const Layout = ({ children, title = 'RC Store' }: Props) => {
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <NavBar />
-      <div
-        style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-        }}
-      >
-        {children}
-      </div>
+      <div className={classes.container}>{children}</div>
       <footer>
         <Footer />
       </footer>
