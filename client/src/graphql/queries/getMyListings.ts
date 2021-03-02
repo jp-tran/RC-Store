@@ -1,18 +1,19 @@
 import { gql } from '@apollo/client';
 
 export default gql`
-  query Products($sellerID: Float) {
-    products(sellerID: $sellerID) {
+  query Listings($sellerID: Float) {
+    listings(sellerID: $sellerID) {
       sku
       name
       price
       currency
       image
       description
-      longDescription
       remainingQuantity
       condition
       location
+      sellerName
+      sellerPhoto
       datePosted
     }
   }

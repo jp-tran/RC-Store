@@ -1,8 +1,8 @@
 import { gql } from '@apollo/client';
 
 export default gql`
-  query Products($isRecurseCenterMerch: Boolean) {
-    products(isRecurseCenterMerch: $isRecurseCenterMerch) {
+  query {
+    products {
       sku
       name
       price
