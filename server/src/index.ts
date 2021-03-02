@@ -4,10 +4,12 @@ import express from 'express';
 import cors from 'cors';
 import { createConnection } from 'typeorm';
 import { Product } from './entities/Product';
+import { Listing } from './entities/Listing';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { HelloResolver } from './resolvers/hello';
 import { ProductResolver } from './resolvers/product';
+import { ListingResolver } from './resolvers/listings';
 
 const main = async () => {
   await createConnection({
@@ -19,7 +21,7 @@ const main = async () => {
     password: process.env.DATABASE_PASSWORD,
     logging: true,
     synchronize: true, //entities will be synced with database every time the app is ran
-    entities: [Product],
+    entities: [Product, Listing],
     uuidExtension: 'pgcrypto',
   });
 
@@ -34,7 +36,7 @@ const main = async () => {
 
   const apolloServer = new ApolloServer({
     schema: await buildSchema({
-      resolvers: [HelloResolver, ProductResolver],
+      resolvers: [HelloResolver, ProductResolver, ListingResolver],
       validate: false,
     }),
   });
