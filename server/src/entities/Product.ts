@@ -43,22 +43,6 @@ export class Product extends BaseEntity {
   image: string;
 
   @Field()
-  @Column()
-  sellerID: number; // need to check this
-
-  @Field()
-  @Column()
-  isRCMerch: boolean;
-
-  @Field()
-  @Column({ default: '' })
-  condition: string;
-
-  @Field()
-  @Column({ default: '' })
-  location: string;
-
-  @Field()
   @CreateDateColumn()
   datePosted: Date;
 

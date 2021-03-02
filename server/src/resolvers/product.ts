@@ -23,18 +23,6 @@ class NewProduct {
 
   @Field({ nullable: true, defaultValue: '' })
   image?: string;
-
-  @Field()
-  sellerID: number; // need to check this
-
-  @Field()
-  isRCMerch: boolean;
-
-  @Field()
-  location: string;
-
-  @Field()
-  condition: string;
 }
 
 @InputType()
@@ -62,34 +50,13 @@ class UpdatedProduct {
 
   @Field({ nullable: true })
   image?: string;
-
-  @Field({ nullable: true })
-  location?: string;
-
-  @Field({ nullable: true })
-  condition?: string;
 }
 
 @Resolver()
 export class ProductResolver {
   @Query(() => [Product])
-  products(
-    @Arg('isRecurseCenterMerch', () => Boolean, { nullable: true })
-    isRecurseCenterMerch?: boolean,
-    @Arg('sellerID', () => Number, { nullable: true })
-    sellerID?: number
-  ): Promise<Product[]> {
-    let searchQueries: any = {};
-
-    if (isRecurseCenterMerch != undefined) {
-      searchQueries.isRCMerch = isRecurseCenterMerch;
-    }
-
-    if (sellerID != undefined) {
-      searchQueries.sellerID = sellerID;
-    }
-
-    return Product.find({ where: searchQueries });
+  products(): Promise<Product[]> {
+    return Product.find();
   }
 
   @Query(() => Product)
