@@ -21,9 +21,16 @@ const Layout = ({
   const useStyles = makeStyles(() =>
     createStyles({
       container: {
+        minHeight: '100vh',
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
+      },
+      contentContainer: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        width: '100%',
         '&::before': {
           content: '""',
           position: 'absolute',
@@ -42,7 +49,7 @@ const Layout = ({
 
   const classes = useStyles();
   return (
-    <div style={{ position: 'relative' }}>
+    <div className={classes.container}>
       <CssBaseline />
       <Head>
         <title>{title}</title>
@@ -50,10 +57,8 @@ const Layout = ({
         <meta name='viewport' content='initial-scale=1.0, width=device-width' />
       </Head>
       <NavBar />
-      <div className={classes.container}>{children}</div>
-      <footer>
-        <Footer />
-      </footer>
+      <div className={classes.contentContainer}>{children}</div>
+      <Footer />
     </div>
   );
 };

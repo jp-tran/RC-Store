@@ -7,8 +7,9 @@ import { Box, Theme } from '@material-ui/core';
 
 const useStyles = makeStyles((theme: Theme) => ({
   footer: {
-    padding: theme.spacing(3, 2),
+    width: '100%',
     marginTop: 'auto',
+    padding: theme.spacing(3, 2),
     borderTop: '1px solid #d7dada', // From the RC website
     backgroundColor: 'white', // can change
   },
