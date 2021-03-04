@@ -21,6 +21,7 @@ const useStyles = makeStyles(() =>
     },
     contentContainer: (styleProps: StyleProps) => ({
       display: 'flex',
+      flexGrow: 1,
       flexDirection: 'column',
       alignItems: 'center',
       width: '100%',
