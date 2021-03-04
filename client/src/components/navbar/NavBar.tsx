@@ -1,13 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 
-import {
-  AppBar,
-  Toolbar,
-  Typography,
-  useMediaQuery,
-  useTheme,
-} from '@material-ui/core';
+import { AppBar, Toolbar, useMediaQuery, useTheme } from '@material-ui/core';
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles';
 
 import NavBarButtons from './NavBarButtons';
@@ -53,6 +47,9 @@ const useStyles = makeStyles((theme: Theme) =>
       flexGrow: 1,
       justifyContent: 'flex-start',
       alignItems: 'center',
+    },
+    image: {
+      height: '40px',
     },
     searchBarContainer: {
       display: 'none',
@@ -100,13 +97,17 @@ const NavBar = () => {
     <AppBar className={`${classes.appbar} ${showShadow ? classes.shadow : ''}`}>
       <Toolbar className={classes.toolbar}>
         <div style={{ display: 'flex', width: '100%' }}>
-          <Typography className={classes.logo} variant='h6'>
+          <div className={classes.logo}>
             <Link href='/'>
-              <a style={{ textDecoration: 'none', color: 'black' }}>
-                Recurse Store
+              <a>
+                <img
+                  className={classes.image}
+                  src='/app-logo.png'
+                  alt='home page'
+                />
               </a>
             </Link>
-          </Typography>
+          </div>
           {isLaptopScreen && (
             <div className={classes.searchBarContainer}>
               <SearchBar />
