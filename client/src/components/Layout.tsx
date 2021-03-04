@@ -7,6 +7,39 @@ import { createStyles, CssBaseline, makeStyles } from '@material-ui/core';
 import NavBar from './navbar/NavBar';
 import Footer from './footer/Footer';
 
+interface StyleProps {
+  gradient: string;
+}
+
+const useStyles = makeStyles(() =>
+  createStyles({
+    container: {
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+    },
+    contentContainer: (styleProps: StyleProps) => ({
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      width: '100%',
+      '&::before': {
+        content: '""',
+        position: 'absolute',
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        zIndex: -100,
+        width: '100%',
+        height: '90vh',
+        background: styleProps.gradient,
+      },
+    }),
+  })
+);
+
 interface Props {
   children?: ReactNode;
   title?: string;
@@ -18,36 +51,8 @@ const Layout = ({
   title = 'Recurse Store',
   gradient = gradients.blue,
 }: Props) => {
-  const useStyles = makeStyles(() =>
-    createStyles({
-      container: {
-        minHeight: '100vh',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      },
-      contentContainer: {
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        width: '100%',
-        '&::before': {
-          content: '""',
-          position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          zIndex: -100,
-          width: '100%',
-          height: '90vh',
-          background: gradient,
-        },
-      },
-    })
-  );
-
-  const classes = useStyles();
+  const styleProps: StyleProps = { gradient };
+  const classes = useStyles(styleProps);
   return (
     <div className={classes.container}>
       <CssBaseline />
