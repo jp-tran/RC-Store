@@ -1,6 +1,6 @@
 import { createStyles, makeStyles, Theme } from '@material-ui/core';
 
-import FeaturedProduct from './FeaturedProduct';
+import ProductCard from './ProductCard';
 import { ProductProps } from '../../types';
 
 const useStyles = makeStyles((theme: Theme) =>
@@ -93,7 +93,7 @@ const ProductCatalog = ({ productList }: { productList: ProductProps[] }) => {
       <div className={classes.grid}>
         {featuredProducts.map((productProps, idx) => {
           return (
-            <FeaturedProduct
+            <ProductCard
               product={productProps}
               productStyle={featuredProductsStyle[idx]}
               key={productProps.sku}
@@ -104,7 +104,7 @@ const ProductCatalog = ({ productList }: { productList: ProductProps[] }) => {
       <div className={classes.nonFeaturedProducts}>
         {nonFeaturedProducts.map((productProps) => {
           return (
-            <FeaturedProduct
+            <ProductCard
               product={productProps}
               productStyle=''
               key={productProps.sku}

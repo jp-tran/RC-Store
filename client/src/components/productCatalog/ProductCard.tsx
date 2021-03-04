@@ -44,14 +44,7 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-export interface FeaturedProductProps {
-  name: string;
-  sku: string;
-  price: number;
-  image?: string;
-}
-
-const FeaturedProduct = ({
+const ProductCard = ({
   product,
   productStyle,
 }: {
@@ -83,4 +76,4 @@ const FeaturedProduct = ({
   );
 };
 
-export default FeaturedProduct;
+export default ProductCard;
