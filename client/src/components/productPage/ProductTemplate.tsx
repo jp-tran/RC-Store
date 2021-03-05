@@ -1,16 +1,28 @@
-import { makeStyles } from '@material-ui/core';
+import { createStyles, makeStyles, Theme } from '@material-ui/core';
 import { ProductProps } from '../../types';
 
 import ProductImage from './ProductImage';
 import ProductInfo from './ProductInfo';
 
-const useStyles = makeStyles({
-  container: {
-    display: 'flex',
-    width: '100%',
-    height: '600px',
-  },
-});
+const useStyles = makeStyles((theme: Theme) =>
+  createStyles({
+    container: {
+      display: 'flex',
+      width: '100%',
+      flexGrow: 1,
+      background: 'white',
+      [theme.breakpoints.up('xs')]: {
+        flexDirection: 'column-reverse',
+        alignItems: 'center',
+      },
+      [theme.breakpoints.up('md')]: {
+        flexDirection: 'row',
+        alignItems: 'flex-start',
+        justifyContent: 'center',
+      },
+    },
+  })
+);
 
 const ProductTemplate = ({ product }: { product: ProductProps }) => {
   const classes = useStyles();
