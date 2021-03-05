@@ -1,23 +1,35 @@
 import React from 'react';
 import { Product, useShoppingCart } from 'use-shopping-cart';
 
-import { Button, makeStyles } from '@material-ui/core';
+import { Button, createStyles, makeStyles } from '@material-ui/core';
 
-const useStyles = makeStyles({
-  button: {
-    margin: '10px',
-  },
-});
+const useStyles = makeStyles(() =>
+  createStyles({
+    button: {
+      margin: '10px',
+    },
+  })
+);
 
 const AddToCartButton = ({ item }: { item: Product }) => {
   const classes = useStyles();
-  const { addItem } = useShoppingCart();
+  const { addItem, cartDetails, incrementItem } = useShoppingCart();
+
+  const handleClick = () => {
+    if (cartDetails.hasOwnProperty(item.sku)) {
+      incrementItem(item.sku);
+    } else {
+      addItem(item);
+    }
+  };
 
   return (
     <Button
       className={classes.button}
-      onClick={() => addItem(item)}
+      onClick={handleClick}
       color='primary'
+      size='large'
+      variant='contained'
     >
       Add to Cart
     </Button>
