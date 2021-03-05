@@ -12,19 +12,13 @@ const useStyles = makeStyles({
   },
 });
 
-export interface ProductImageProps {
-  name: string;
-  price: number;
-  image?: string;
-}
-
-const ProductImage = ({ product }: { product: ProductProps }) => {
+const ProductImage = ({ product }: { product: ProductProps[] }) => {
   const classes = useStyles();
-  const { image } = product;
+  const { image, name } = product[0];
 
   return (
     <div className={classes.imageContainer}>
-      <img className={classes.image} src={image} />
+      <img className={classes.image} src={image} alt={name} />
     </div>
   );
 };
