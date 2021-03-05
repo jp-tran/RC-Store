@@ -1,7 +1,8 @@
 import React from 'react';
-import { Product, useShoppingCart } from 'use-shopping-cart';
+import { useShoppingCart } from 'use-shopping-cart';
 
 import { Button, createStyles, makeStyles } from '@material-ui/core';
+import { ProductProps } from '../../types';
 
 const useStyles = makeStyles(() =>
   createStyles({
@@ -11,15 +12,30 @@ const useStyles = makeStyles(() =>
   })
 );
 
-const AddToCartButton = ({ item }: { item: Product }) => {
+const AddToCartButton = ({
+  item,
+  selectedSize,
+}: {
+  item: ProductProps[];
+  selectedSize: string;
+}) => {
   const classes = useStyles();
   const { addItem, cartDetails, incrementItem } = useShoppingCart();
 
   const handleClick = () => {
-    if (cartDetails.hasOwnProperty(item.sku)) {
-      incrementItem(item.sku);
+    // search for the variation that matches the selected size
+    let selectedItem = item[0];
+    for (const variation of item) {
+      if (variation.size === selectedSize) {
+        selectedItem = variation;
+        break;
+      }
+    }
+
+    if (cartDetails.hasOwnProperty(selectedItem.sku)) {
+      incrementItem(selectedItem.sku);
     } else {
-      addItem(item);
+      addItem(selectedItem);
     }
   };
 

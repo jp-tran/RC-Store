@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { createStyles, makeStyles, Theme, Typography } from '@material-ui/core';
 
 import AddToCartButton from '../shoppingCart/AddToCartButton';
 import { ProductProps } from '../../types';
 import { formatCurrencyString } from 'use-shopping-cart';
+import availableProductSizes from '../../utils/available-product-sizes';
+import DropDownSelect from './DropDownSelect';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -32,37 +35,37 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 500,
       marginBottom: '1rem',
     },
-    textContainer: {
-      // padding: '20px',
-      // fontSize: '1.5em',
-      // overflow: 'scroll',
-    },
     buttonContainer: {
       marginTop: '1.5em',
+      display: 'flex',
       [theme.breakpoints.up('xs')]: {
         alignSelf: 'center',
+        flexDirection: 'column',
+        alignItems: 'center',
       },
       [theme.breakpoints.up('md')]: {
         alignSelf: 'flex-start',
+        flexDirection: 'row',
+        alignItems: 'flex-end',
       },
     },
   })
 );
 
-export interface ProductInfoProps {
-  name: string;
-  sku: string;
-  price: number;
-  currency: string;
-  longDescription?: string;
-}
-
-const ProductInfo = ({ product }: { product: ProductProps }) => {
+const ProductInfo = ({ product }: { product: ProductProps[] }) => {
   const classes = useStyles();
-  const { name, price, currency, longDescription } = product;
+  const { name, price, currency, longDescription } = product[0];
+
+  const defaultSizes = ['XS', 'S', 'M', 'L', 'XL'];
+  const availableSizes = availableProductSizes(defaultSizes, product);
+
+  const displaySizeSelect = availableSizes.length > 0;
+
+  const [selectedSize, setSelectedSize] = useState(availableSizes[0]);
+
   return (
     <div className={classes.child}>
-      <div className={classes.textContainer}>
+      <div>
         <Typography className={classes.productName} component='h1' variant='h3'>
           {name}
         </Typography>
@@ -74,7 +77,16 @@ const ProductInfo = ({ product }: { product: ProductProps }) => {
         </Typography>
       </div>
       <div className={classes.buttonContainer}>
-        <AddToCartButton item={product} />
+        {displaySizeSelect && (
+          <DropDownSelect
+            label='Size'
+            options={availableSizes}
+            selectedOption={selectedSize}
+            setSelectedOption={setSelectedSize}
+            width='60px'
+          />
+        )}
+        <AddToCartButton item={product} selectedSize={selectedSize} />
       </div>
     </div>
   );
