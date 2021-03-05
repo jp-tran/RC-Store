@@ -13,4 +13,6 @@ export interface Example {
 
 export interface ProductProps extends Product {
   longDescription?: string;
+  remainingQuantity?: number;
+  size?: string;
 }

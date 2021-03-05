@@ -10,6 +10,8 @@ export default gql`
       image
       description
       longDescription
+      size
+      remainingQuantity
     }
   }
 `;
