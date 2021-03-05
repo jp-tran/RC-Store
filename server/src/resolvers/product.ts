@@ -18,6 +18,9 @@ class NewProduct {
   @Field({ nullable: true, defaultValue: 'USD' })
   currency?: string;
 
+  @Field({ nullable: true, defaultValue: 'NA' })
+  size?: string;
+
   @Field({ nullable: true, defaultValue: 1 })
   remainingQuantity?: number;
 
@@ -46,6 +49,9 @@ class UpdatedProduct {
   currency?: string;
 
   @Field({ nullable: true })
+  size?: string;
+
+  @Field({ nullable: true })
   remainingQuantity?: number;
 
   @Field({ nullable: true })
@@ -59,12 +65,13 @@ export class ProductResolver {
     return Product.find();
   }
 
-  @Query(() => Product)
+  @Query(() => [Product])
   async product(
     @Arg('sku', () => String)
     sku: string
-  ): Promise<Product | undefined> {
-    return await Product.findOne(sku);
+  ): Promise<Product[] | undefined> {
+    const prod = await Product.findOne(sku);
+    return Product.find({ where: { name: prod!.name } });
   }
 
   // need to check if user is authorized before creating
