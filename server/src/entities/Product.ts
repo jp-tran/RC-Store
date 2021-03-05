@@ -35,6 +35,10 @@ export class Product extends BaseEntity {
   currency!: string;
 
   @Field()
+  @Column({ default: 'NA' })
+  size!: string;
+
+  @Field()
   @Column()
   remainingQuantity: number;
 
