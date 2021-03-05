@@ -76,6 +76,8 @@ const ProductCatalog = ({ productList }: { productList: ProductProps[] }) => {
 
   const nonFeaturedProducts: ProductProps[] = [];
 
+  const displayedItemNames = new Set(); // set of unique product names
+
   for (const prod of productList) {
     if (prod.sku === featuredSKUs[0]) {
       featuredProducts[0] = prod;
@@ -84,8 +86,12 @@ const ProductCatalog = ({ productList }: { productList: ProductProps[] }) => {
     } else if (prod.sku == featuredSKUs[2]) {
       featuredProducts[2] = prod;
     } else {
-      nonFeaturedProducts.push(prod);
+      // only add to display list if an item with the same name has not been added
+      if (!displayedItemNames.has(prod.name)) {
+        nonFeaturedProducts.push(prod);
+      }
     }
+    displayedItemNames.add(prod.name);
   }
 
   return (

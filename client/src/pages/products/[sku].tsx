@@ -14,13 +14,15 @@ const GET_PRODUCT = gql`
       image
       description
       longDescription
+      size
+      remainingQuantity
     }
   }
 `;
 
-const ProductPage = ({ product }: { product: ProductProps }) => {
+const ProductPage = ({ product }: { product: ProductProps[] }) => {
   return (
-    <Layout title={product.name}>
+    <Layout title={product[0].name}>
       <ProductTemplate product={product} />
     </Layout>
   );

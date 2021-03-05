@@ -24,7 +24,10 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 );
 
-const ProductTemplate = ({ product }: { product: ProductProps }) => {
+/**
+ * @param product - an array of different variations of one product (e.g. different colors/sizes)
+ */
+const ProductTemplate = ({ product }: { product: ProductProps[] }) => {
   const classes = useStyles();
 
   return (
