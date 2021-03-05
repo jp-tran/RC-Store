@@ -14,6 +14,7 @@ import IncrementIcon from '@material-ui/icons/Add';
 import DecrementIcon from '@material-ui/icons/Remove';
 
 import CheckoutButton from './CheckoutButton';
+import ItemNameAndSize from './ItemNameAndSize';
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -108,7 +109,7 @@ const CartSummary = () => {
       <div style={{ width: '100%', marginBottom: '1rem' }} key={cartEntry.sku}>
         <div className={`${classes.subContainer} ${classes.itemSummary}`}>
           <div className={classes.leftBlock}>
-            <Typography>{cartEntry.name}</Typography>
+            <ItemNameAndSize name={cartEntry.name} size={cartEntry.size} />
             <div className={classes.itemActions}>
               <div className={classes.quantity}>
                 <IconButton
