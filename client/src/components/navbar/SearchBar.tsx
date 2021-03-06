@@ -25,9 +25,14 @@ const useStyles = makeStyles((theme: Theme) =>
     input: {
       color: 'black',
       padding: theme.spacing(1, 1, 1, 0),
-      marginLeft: '0.5rem',
       width: '100%',
       height: '100%',
+      [theme.breakpoints.up('xs')]: {
+        marginLeft: '5px',
+      },
+      [theme.breakpoints.up('sm')]: {
+        marginLeft: '0.5rem',
+      },
     },
     searchButton: {
       borderRadius: 0,
