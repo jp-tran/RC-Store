@@ -1,5 +1,6 @@
 import { Arg, Resolver, Query, InputType, Field, Mutation } from 'type-graphql';
 import { Product } from '../entities/Product';
+import processSearchQuery from '../utils/processSearchQuery';
 
 @InputType()
 class NewProduct {
@@ -61,8 +62,16 @@ class UpdatedProduct {
 @Resolver()
 export class ProductResolver {
   @Query(() => [Product])
-  products(): Promise<Product[]> {
-    return Product.find();
+  async products(
+    @Arg('query', () => String, { nullable: true })
+    query?: string
+  ): Promise<Product[]> {
+    const allProducts = await Product.find();
+    if (query == undefined || query.trim() === '') {
+      return allProducts;
+    } else {
+      return await processSearchQuery(query, allProducts);
+    }
   }
 
   @Query(() => [Product])
