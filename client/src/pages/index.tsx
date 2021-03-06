@@ -19,7 +19,6 @@ export async function getServerSideProps() {
 
   const { data } = await apolloClient.query({
     query: GET_ALL_PRODUCTS,
-    variables: { isRecurseCenterMerch: true },
   });
 
   const products = data.products;
