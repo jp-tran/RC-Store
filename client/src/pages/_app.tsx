@@ -9,6 +9,7 @@ import getStripe from '../utils/get-stripe';
 import CartProvider from '../components/shoppingCart/CartProvider';
 import customTheme from '../config/theme';
 import { useApollo } from '../lib/apolloClient';
+import SearchBarContextProvider from '../contexts/SearchBarContextProvider';
 
 const App = ({ Component, pageProps }: AppProps) => {
   const apolloClient = useApollo(pageProps);
@@ -27,7 +28,9 @@ const App = ({ Component, pageProps }: AppProps) => {
         <Elements stripe={getStripe()}>
           <CartProvider>
             <ThemeProvider theme={customTheme}>
-              <Component {...pageProps} />
+              <SearchBarContextProvider>
+                <Component {...pageProps} />
+              </SearchBarContextProvider>
             </ThemeProvider>
           </CartProvider>
         </Elements>
