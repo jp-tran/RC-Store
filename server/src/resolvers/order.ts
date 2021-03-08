@@ -21,6 +21,9 @@ class NewlyPurchasedProduct {
 
   @Field()
   quantity: number;
+
+  @Field()
+  image: string;
 }
 
 @InputType()
@@ -61,5 +64,20 @@ export class OrderResolver {
     order.grandTotal = newOrder.grandTotal;
     order.purchasedProducts = purchasedProducts;
     return await Order.save(order);
+  }
+
+  @Mutation(() => Boolean)
+  async deleteOrder(@Arg('id', () => Number) id: number): Promise<boolean> {
+    const deleteResult = await Order.delete({ id });
+    return deleteResult.affected != 0; // returns true if a listing was deleted
+  }
+
+  @Mutation(() => PurchasedProduct)
+  async updatePurchasedProduct(
+    @Arg('id', () => Number) id: number,
+    @Arg('image', () => String) image: string
+  ): Promise<PurchasedProduct | undefined> {
+    await PurchasedProduct.update(id, { image });
+    return PurchasedProduct.findOne(id);
   }
 }
