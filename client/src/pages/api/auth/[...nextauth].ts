@@ -18,16 +18,34 @@ const options = {
       scope: '',
       profileUrl: 'https://www.recurse.com/api/v1/profiles/me',
       async profile(profile: any) {
-        return {
-          id: profile.id,
-          name: profile.first_name,
-          email: profile.email,
-          image: profile.image_path,
-        };
+        return profile;
       },
     },
   ],
 
+  callbacks: {
+    // persist custom fields in the jwt token
+    async jwt(token: any, profile: any) {
+      if (profile) {
+        token.user = {
+          id: profile.id,
+          name: profile.name,
+          firstName: profile.first_name,
+          lastName: profile.last_name,
+          email: profile.email,
+          image: profile.image_path,
+          slug: profile.slug,
+        };
+      }
+      return token;
+    },
+
+    // whenever session is checked, return the custom fields persisted on the jwt token
+    async session(session: any, token: any) {
+      session.user = token.user;
+      return session;
+    },
+  },
   // A database is optional, but required to persist accounts in a database
   // database: process.env.DATABASE_URL,
   secret: process.env.NEXT_AUTH_CONFIG_SECRET,
