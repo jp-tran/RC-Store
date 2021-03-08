@@ -16,3 +16,40 @@ export interface ProductProps extends Product {
   remainingQuantity?: number;
   size?: string;
 }
+
+export type Size = 'XS' | 'S' | 'M' | 'L' | 'XL' | 'NA';
+
+export interface PurchasedProduct {
+  sku: string;
+  name: string;
+  price: number;
+  currency?: string;
+  size?: Size;
+  quantity: number;
+  image?: string;
+}
+
+export interface NewOrder {
+  purchasedProducts: PurchasedProduct[];
+  userID: number;
+  grandTotal: number;
+}
+
+export interface Order {
+  id?: number;
+  userID?: number;
+  grandTotal?: number;
+  date?: string;
+  purchasedProducts?: PurchasedProduct[];
+}
+
+export interface CustomUser {
+  [key: string]: any;
+  id?: number;
+  name?: string | null;
+  firstName?: string;
+  lastName?: string;
+  email?: string | null;
+  image?: string | null;
+  slug?: string;
+}
