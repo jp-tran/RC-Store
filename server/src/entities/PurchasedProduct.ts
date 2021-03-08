@@ -41,4 +41,8 @@ export class PurchasedProduct extends BaseEntity {
   @Field()
   @Column()
   quantity!: number;
+
+  @Field()
+  @Column({ default: '' })
+  image!: string;
 }
