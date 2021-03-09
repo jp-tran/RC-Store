@@ -1,0 +1,14 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "ptran",
+  "password": "ptran",
+  "database": "recurse-store-1",
+  "entities": ["src/entities/*.ts"],
+  "migrations": ["src/migrations/*.ts"],
+  "cli": {
+    "migrationsDir": "src/migrations"
+  },
+  "uuidExtension": "pgcrypto"
+}

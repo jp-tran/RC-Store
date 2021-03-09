@@ -2,6 +2,7 @@ import 'reflect-metadata';
 import 'dotenv-safe/config';
 import express from 'express';
 import cors from 'cors';
+import path from 'path';
 import { ApolloServer } from 'apollo-server-express';
 import { buildSchema } from 'type-graphql';
 import { createConnection } from 'typeorm';
@@ -15,7 +16,7 @@ import { ListingResolver } from './resolvers/listings';
 import { OrderResolver } from './resolvers/order';
 
 const main = async () => {
-  await createConnection({
+  const conn = await createConnection({
     type: 'postgres',
     host: 'localhost',
     port: 5432,
@@ -23,10 +24,15 @@ const main = async () => {
     username: process.env.DATATBASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     logging: true,
-    synchronize: true, //entities will be synced with database every time the app is ran
+    // synchronize: true, //entities will be synced with database every time the app is ran
     entities: [Product, Listing, Order, PurchasedProduct],
     uuidExtension: 'pgcrypto',
+    migrations: [path.join(__dirname, './migrations/*')], // load migrations here
+    cli: {
+      migrationsDir: 'migrations', // create migrations here
+    },
   });
+  await conn.runMigrations();
 
   const app = express();
 
