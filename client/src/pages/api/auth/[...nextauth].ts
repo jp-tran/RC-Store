@@ -49,7 +49,7 @@ const options = {
   // A database is optional, but required to persist accounts in a database
   // database: process.env.DATABASE_URL,
   secret: process.env.NEXT_AUTH_CONFIG_SECRET,
-  site: 'http://localhost:3000',
+  site: process.env.NEXTAUTH_URL,
 };
 
 const authHandler: NextApiHandler = (req, res) => NextAuth(req, res, options);
