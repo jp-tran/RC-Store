@@ -18,11 +18,7 @@ import { OrderResolver } from './resolvers/order';
 const main = async () => {
   await createConnection({
     type: 'postgres',
-    host: 'localhost',
-    port: 5432,
-    database: 'recurse-store',
-    username: process.env.DATATBASE_USERNAME,
-    password: process.env.DATABASE_PASSWORD,
+    url: process.env.DATABASE_URL,
     logging: true,
     // synchronize: true, //entities will be synced with database every time the app is ran
     entities: [Product, Listing, Order, PurchasedProduct],
