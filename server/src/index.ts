@@ -16,7 +16,7 @@ import { ListingResolver } from './resolvers/listings';
 import { OrderResolver } from './resolvers/order';
 
 const main = async () => {
-  const conn = await createConnection({
+  await createConnection({
     type: 'postgres',
     host: 'localhost',
     port: 5432,
@@ -32,7 +32,6 @@ const main = async () => {
       migrationsDir: 'migrations', // create migrations here
     },
   });
-  await conn.runMigrations();
 
   const app = express();
 
