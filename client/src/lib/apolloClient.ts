@@ -25,7 +25,7 @@ function createApolloClient() {
 
   const httpLink = new HttpLink({
     uri: process.env.NEXT_PUBLIC_API_URL, // Server URL (must be absolute)
-    credentials: 'include', // Additional fetch() options like `credentials` or `headers`
+    credentials: 'same-origin', // Additional fetch() options like `credentials` or `headers`
   });
 
   const link = ApolloLink.from([
