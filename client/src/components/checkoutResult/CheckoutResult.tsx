@@ -36,10 +36,8 @@ const useStyles = makeStyles(() =>
 const CheckoutResult = () => {
   const classes = useStyles();
   const [createOrder] = useMutation(CREATE_ORDER);
-  const [session, loading] = useSession();
+  const [session] = useSession();
   const { cartCount, cartDetails, clearCart, totalPrice } = useShoppingCart();
-
-  if (loading) return <p>Loading...</p>;
 
   useEffect(() => {
     if (session) {
