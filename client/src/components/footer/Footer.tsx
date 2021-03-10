@@ -23,10 +23,10 @@ export default function Footer() {
       <Container>
         <Box display='flex' flexDirection='row' justifyContent='flex-start'>
           <Typography variant='body1'>
-            <Link href='/about-us' style={{ marginRight: '1.5em' }}>
+            <Link href='#' style={{ marginRight: '1.5em' }}>
               About us
             </Link>
-            <Link href='/faq'>FAQ</Link>
+            <Link href='#'>FAQ</Link>
           </Typography>
         </Box>
       </Container>
