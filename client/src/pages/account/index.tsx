@@ -6,35 +6,40 @@ import GET_MY_ORDERS from '../../graphql/queries/getMyOrders';
 import Layout from '../../components/Layout';
 import Account from '../../components/account/Account';
 import gradients from '../../config/gradients';
+import Loading from '../../components/Loading';
+import AccessDenied from '../../components/AccessDenied';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const AccountPage = () => {
   const [session, loading] = useSession();
 
+  let content;
+
   if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (!loading && !session) {
-    return <p>Access Denied</p>;
-  }
-
-  if (session) {
+    content = <Loading />;
+  } else if (!loading && !session) {
+    content = <AccessDenied />;
+  } else if (session) {
     const customUser: CustomUser = session.user;
 
     const { data, loading, error } = useQuery(GET_MY_ORDERS, {
       variables: { userID: customUser.id },
     });
 
-    if (loading) return <p>Loading...</p>;
-
-    if (error) return <p>Error...</p>;
-
-    return (
-      <Layout title='Account | Recurse Store' gradient={gradients.orange}>
-        <Account user={customUser} orders={data.orders} />
-      </Layout>
-    );
+    if (loading) {
+      content = <Loading />;
+    } else if (error) {
+      content = <ErrorMessage msg='could not fetch data' />;
+    } else {
+      content = <Account user={customUser} orders={data.orders} />;
+    }
   }
+
+  return (
+    <Layout title='Account | Recurse Store' gradient={gradients.orange}>
+      {content}
+    </Layout>
+  );
 };
 
 export default AccountPage;

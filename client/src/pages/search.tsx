@@ -7,6 +7,8 @@ import SearchResults from '../components/productCatalog/SearchResults';
 import gradients from '../config/gradients';
 import GET_SEARCHED_PRODUCTS from '../graphql/queries/getSearchedProducts';
 import { ProductProps } from '../types';
+import Loading from '../components/Loading';
+import ErrorMessage from '../components/ErrorMessage';
 
 const SearchPage = () => {
   const router = useRouter();
@@ -15,19 +17,20 @@ const SearchPage = () => {
     variables: { query: router.query.query },
   });
 
+  let content;
+
   if (loading) {
-    return <p>Loading...</p>;
+    content = <Loading />;
+  } else if (error) {
+    content = <ErrorMessage msg='could not fetch data' />;
+  } else {
+    const products: ProductProps[] = data.products;
+    content = <SearchResults productList={products} />;
   }
-
-  if (error) {
-    return <p>An error occured</p>;
-  }
-
-  const products: ProductProps[] = data.products;
 
   return (
     <Layout title='Search Results' gradient={gradients.green}>
-      <SearchResults productList={products} />
+      {content}
     </Layout>
   );
 };

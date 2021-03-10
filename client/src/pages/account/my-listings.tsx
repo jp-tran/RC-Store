@@ -6,19 +6,20 @@ import Layout from '../../components/Layout';
 import GET_MY_LISTINGS from '../../graphql/queries/getMyListings';
 import { CustomUser, ProductProps } from '../../types';
 import gradients from '../../config/gradients';
+import Loading from '../../components/Loading';
+import AccessDenied from '../../components/AccessDenied';
+import ErrorMessage from '../../components/ErrorMessage';
 
 const MyProductsPage = () => {
   const [session, loading] = useSession();
 
+  let content;
+
   if (loading) {
-    return <p>Loading...</p>;
-  }
-
-  if (!loading && !session) {
-    return <p>Access Denied</p>;
-  }
-
-  if (session) {
+    content = <Loading />;
+  } else if (!loading && !session) {
+    content = <AccessDenied />;
+  } else if (session) {
     const customUser: CustomUser = session.user;
 
     const { loading, data, error } = useQuery(GET_MY_LISTINGS, {
@@ -26,19 +27,20 @@ const MyProductsPage = () => {
     });
 
     if (loading) {
-      return <p>Loading...</p>;
+      content = <Loading />;
+    } else if (error) {
+      content = <ErrorMessage msg='could not fetch data' />;
+    } else {
+      const products: ProductProps[] = data.listings;
+      content = <MyProducts products={products} />;
     }
-
-    if (error) return <p>Error fetching data</p>;
-
-    const products: ProductProps[] = data.listings;
-
-    return (
-      <Layout title='Account | My Products' gradient={gradients.pink}>
-        <MyProducts products={products} />
-      </Layout>
-    );
   }
+
+  return (
+    <Layout title='Account | My Products' gradient={gradients.pink}>
+      {content}
+    </Layout>
+  );
 };
 
 export default MyProductsPage;
