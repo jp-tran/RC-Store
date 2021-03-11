@@ -10,9 +10,6 @@ const useStyles = makeStyles({
   checkoutButton: {
     width: 'auto',
     margin: '10px  0 10px 10px',
-    border: '1px solid rgba(42,45,45,0.6)',
-    color: '#23a050',
-    borderColor: '#3dc06c',
   },
 });
 
@@ -52,6 +49,8 @@ const CheckoutButton = () => {
       className={classes.checkoutButton}
       disabled={cartEmpty || loading}
       onClick={handleCheckout}
+      color='primary'
+      variant='contained'
     >
       Checkout
     </Button>

@@ -164,7 +164,9 @@ const CartSummary = () => {
         <div className={`${classes.subContainer} ${classes.cartSummary}`}>
           <Typography>{`Total: ${formattedTotalPrice}`}</Typography>
           <div>
-            <Button onClick={() => clearCart()}>Clear Cart</Button>
+            <Button variant='outlined' onClick={() => clearCart()}>
+              Clear Cart
+            </Button>
             <CheckoutButton />
           </div>
         </div>
