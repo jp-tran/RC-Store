@@ -1,6 +1,8 @@
 # Recurse Store
 A mock e-commerce platform for [Recurse Center](https://www.recurse.com/) participants and alumni.
 
+![Recurse Store screen shot](/site_screen_shot.png)
+
 ## Technologies
 ### Front-end
 * [Next.js](https://nextjs.org/): React framework for server-side rendering
